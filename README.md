@@ -1,2 +1,3 @@
-# knowledge-base
-Knowledge Base repository
+# Knowledge Base  
+
+Centralized repository of useful information  
