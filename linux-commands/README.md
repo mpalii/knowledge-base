@@ -1,7 +1,38 @@
 # Linux commands
 
-`<cmd> --help ` command documentation (help)  
+`uptime` tell how long the system has been running  
+`uname -a` print system information  
+`lscpu` display information about the CPU architecture  
+`echo $PATH` print PATH environment variable  
+`printenv PATH` print PATH environment variable  
+`printenv` print all or part of environment  
+ ctr + alt + F3 (F4, F5, F6) - switch to terminal mode (tty)  
+ ctr + alt + F2 - back to graphical mode  
+ ctr + alt + F1 - back to logins screen to graphical mode  
+
+ `<cmd> --help ` command documentation (help)  
+
+`man man` refference manual for manual  
 `man <cmd(utility)>` system reference manual utility  
+`man -k <keyword>' search manual with keyword  
+
+`info info` iformation about information utility  
+`info <cmd(utility)> read Info documents  
+
+`whatis <cmd(utility)>` display one-line manual page  
+`whereis <cmd(utility)>` locate the binary, source, and manual page files for command  
+`which <cmd(utility)>` locate a command  
+
+`ps` reposrt the snapshot of the current processes  
+
+`<cmd>` the command occupies the terminal window until it completes, this is a foreground job  
+`<cmd> &`  the command runs without occupying the terminal window, this is a background job  
+`jobs` list all jobs  
+`bg %n` places the current or specified job in the background, where n is the job ID  
+`fg %n` brings the current or specified job into the foreground, where n is the job ID  
+
+ctrl + c - terminate the foreground job  
+ctrl + z - stops the foreground job and places it in the background as a stopped job  
 
 `pwd` print working directory  
 
