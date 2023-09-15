@@ -53,8 +53,13 @@ ctrl + z - stops the foreground job and places it in the background as a stopped
 
 `clear` clear the terminal screen  
 
+`cat [FILE]` concatenate files and print out on the standard output  
+`more [FILE]` file perusal filter for crt viewing  
+`less [FILE]` opposite of `more` with more festures  
+
 `touch <FILE1> <FILE2> ...` change file timestamp, a FILE argument that does not exist is created empty  
 `mkdir <DIR1> <DIR2> ...` make directories  
+`mkdir -p <DIR1>/<DIR2>/<DIR3` make parent directories as needed  
 `cp <SRC1> <SRC2> ... <DIR>` copy files and directories  
 `mv <SRC> <DEST>` move (rename) files  
 
@@ -63,6 +68,43 @@ ctrl + z - stops the foreground job and places it in the background as a stopped
 `rm <PATH>/*.txt` remove all files in directory with '.txt' extention  
 `rm <PATH>/test.*` remove all files in directory started with 'test.' prefix  
 `rm -d <PATH>` remove folder  
+
+`ln` make links between files (hard)  
+`ln -s` make symbolic links instead of hard links  
+
+`find` find for files in a directory hierarchy  
+`find . -type f -name "*.txt"` find all files in the current directory with '.txt' extension  
+`find . -type f -iname "main*"` find all files in the current directory with 'main' prefix, ignore case  
+`find . -type f -perm 0664` find all files in the current directory with 664 permissions  
+`find . -type f -size -1M` find all files in the current directory with size less than 1 megabyte  
+`find . -type d -size +1k` find all directories in the current directory with size greater than 1 kilobyte  
+`find . -type f -not -iname "*.txt"` find all files in the current directory with the extention NOT '.txt', ignore case  
+
+`wc [FILE]` print newline, word, and byte counts for each file  
+
+`sort [FILE]...` sort lines of text files  
+`sort file.txt > fileCopy.txt` sort lines of 'file.txt' and save result to 'fileCopy.txt'  
+`sort -n [FILE]` sort lines of file as numbers  
+`sort -r [FILE]` sort lines of file in reverse order  
+
+`cut [FILE]` remove sections from each line of files  
+
+`grep` print lines that match patterns  
+`grep "some text" file.txt` print lines from file.txt that contain "some text"  
+`grep "text" file1.txt file2.txt` print lines from file1.txt and file2.txt that contains "text"  
+`grep -n "text" test.txt"` print lines and line number from test.txt that contains "text"  
+`grep -n -i "tEXt" file.txt` print lines and line number from file.txt that contains "text", ignore case  
+
+`>` redirect stdout to the new file  
+`>>` redirect stdout and concatenate to the file  
+`2>` redirect stderr to the new file  
+`2>>` redirect stderr and concatenate to the file  
+`&>` redirect all OUTs to the new file  
+`&>>` redirect all OUTs and concatenate to the file  
+`2> /dev/null` redirect stderr to nowhere  
+`<` input stream  
+
+`find . -type f -iname "*.cpp" -exec grep -i -n "main*" {} +` find files with 'cpp' extention and search for 'main*' in them   
 
 `sudo <cmd>` execute command as the superuser or another user  
 `sudo su` execute command 'switch user' as a superuser  
@@ -87,29 +129,6 @@ ctrl + z - stops the foreground job and places it in the background as a stopped
 `apt-cache search <name pattern>` search the package list  
 
 `add-apt-repository` adds a repository into the /etc/apt/sources.list or /etc/apt/sources.list.d or removes an existing one  
-
-`find` find for files in a directory hierarchy  
-`find . -type f -name "*.txt"` find all files in the current directory with '.txt' extension  
-`find . -type f -iname "main*"` find all files in the current directory with 'main' prefix, ignore case  
-`find . -type f -perm 0664` find all files in the current directory with 664 permissions  
-`find . -type f -size -1M` find all files in the current directory with size less than 1 megabyte  
-`find . -type d -size +1k` find all directories in the current directory with size greater than 1 kilobyte  
-`find . -type f -not -iname "*.txt"` find all files in the current directory with the extention NOT '.txt', ignore case  
-
-`cat [FILE]` concatenate files and print out on the standard output  
-
-`grep` print lines that match patterns  
-`grep "some text" file.txt` print lines from file.txt that contain "some text"  
-`grep "text" file1.txt file2.txt` print lines from file1.txt and file2.txt that contains "text"  
-`grep -n "text" test.txt"` print lines and line number from test.txt that contains "text"  
-`grep -n -i "tEXt" file.txt` print lines and line number from file.txt that contains "text", ignore case  
-
-`find . -type f -iname "*.cpp" -exec grep -i -n "main*" {} +` find files with 'cpp' extention and search for 'main*' in them   
-
-`sort [FILE]...` sort lines of text files  
-`sort file.txt > fileCopy.txt` sort lines of 'file.txt' and save result to 'fileCopy.txt'  
-`sort -n [FILE]` sort lines of file as numbers  
-`sort -r [FILE]` sort lines of file in reverse order  
 
 `top` display Linux processes  
 
