@@ -15,6 +15,7 @@ https://snapcraft.io/
 `sudo snap install slack`  
 `sudo snap install spotify`  
 
+`sudo apt install tree`  
 `sudo apt install git`  
 `sudo apt install openjdk-8-jdk`  
 `sudo apt install openjdk-17-jdk`  
