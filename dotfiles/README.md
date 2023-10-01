@@ -17,7 +17,8 @@ https://snapcraft.io/
 
 `sudo apt install tree`  
 `sudo apt install git`  
-`sudo apt install openjdk-8-jdk`  
 `sudo apt install openjdk-17-jdk`  
+`sudo apt install openjdk-17-jdk-source`  
+`sudo apt install openjdk-17-jdk-doc`  
 `sudo update-alternatives --config java`  
 `sudo apt install maven`  
