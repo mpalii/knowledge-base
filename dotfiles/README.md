@@ -16,6 +16,7 @@ https://snapcraft.io/
 `sudo snap install spotify`  
 
 `sudo apt install tree`  
+`sudo apt install neovim`  
 `sudo apt install git`  
 `sudo apt install openjdk-17-jdk`  
 `sudo apt install openjdk-17-jdk-source`  
