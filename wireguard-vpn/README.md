@@ -92,3 +92,6 @@ Stop service:
 ### 4. Configuration pulling  
 `sudo apt install qrencode`  utility to generate QR code  
 `qrencode -t ansiutf8 < /etc/wireguard/peerXX/wg0.conf` to generate QR code with configuration for peer XX  
+
+`sudo wg-quick up wg0`  
+`sudo wg-quick down wg0`  
