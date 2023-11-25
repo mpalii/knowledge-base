@@ -1,16 +1,16 @@
 # System install process based on Debian 12  
-- Using [Download](https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-12.2.0-amd64-netinst.iso) section, prepare the bootable USB device
-- Install
-- Select system language: English
-- Select location
-- Configure locale: United States - en_US.UTF-8
-- Configure the keyboard: American English
-- Configure network (The best option is to use ethernet connection)
-- Define a hostname (some name fot the workstation)
-- Set up users and passwords
-- Partition disks - Manual (create ESP section 1GB, for modern SSD no need to create SWAP section, create Ext4 section with the mountpoint at "/")
-- Configure the package manager
-- Software selection - uncheck all packages  
+- Prepare bootable USB device using the image [Download](https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-12.2.0-amd64-netinst.iso)  
+- Install:
+  1. Select system language: English
+  2. Select location
+  3. Configure locale: United States - en_US.UTF-8
+  4. Configure the keyboard: American English
+  5. Configure network (The best option is to use ethernet connection)
+  6. Define a hostname (some name fot the workstation)
+  7. Set up users and passwords
+  8. Partition disks - Manual (create ESP section 1GB, for modern SSD no need to create SWAP section, create Ext4 section with the mountpoint at "/")
+  9. Configure the package manager
+  10. Software selection - uncheck all packages  
 - Reboot
 
 # Add user to sudoers
@@ -26,7 +26,7 @@
 UTF-8 -> Combined - Latin, ... -> Termius -> 10x18  
 
 # Primary check  
-`journalctl -p 3 -b` check system issues  
+`sudo journalctl -p 3 -b` check system issues  
 In case pf any bluetooth issues enabling the experimental features can help with it see [Enabling experimental features](https://wiki.archlinux.org/title/Bluetooth#Enabling_experimental_features) 
 
 
