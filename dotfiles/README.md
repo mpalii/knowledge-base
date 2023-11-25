@@ -13,6 +13,14 @@
 - Software selection - uncheck all packages  
 - Reboot
 
+# Add user to sudoers
+`su --login root` switch to the root account  
+`apt install sudo` install sudo if need  
+`groups <USERNAME>` check the list of user groups before  
+`usermod --append --group sudo <USERNAME>` add user to the sudo group  
+`groups <USERNAME>` check the list of user groups after  
+`reboot now` perform reboot from root session  
+
 # Primary check  
 `journalctl -p 3 -b` check system issues  
 In case pf any bluetooth issues enabling the experimental features can help with it see [Enabling experimental features](https://wiki.archlinux.org/title/Bluetooth#Enabling_experimental_features) 
