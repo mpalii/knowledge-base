@@ -21,18 +21,21 @@
 `groups <USERNAME>` check the list of user groups after  
 `reboot now` perform reboot from root session  
 
-# Change ttl font size  
+# Change ttl font size (optional)  
 `sudo dpkg-reconfigure console-setup`  
 UTF-8 -> Combined - Latin, ... -> Termius -> 10x18  
 
 # Primary check  
 `sudo journalctl -p 3 -b` check system issues  
-In case pf any bluetooth issues enabling the experimental features can help with it see [Enabling experimental features](https://wiki.archlinux.org/title/Bluetooth#Enabling_experimental_features) 
+In case pf any bluetooth issues enabling the experimental features can help with it see [Enabling experimental features](https://wiki.archlinux.org/title/Bluetooth#Enabling_experimental_features)  
+
+# Minimal GUI (GNOME based)
+`sudo apt install gnome-core` very basic GNOME package  
 
 
 
-TODO move to the script section below
-# dotfiles
+# TODO move to the script section below
+## dotfiles
 This is a draft for the real configuration scripts  
 
 `apt list --upgradable`  
