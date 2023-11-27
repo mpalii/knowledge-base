@@ -32,11 +32,22 @@ In case pf any bluetooth issues enabling the experimental features can help with
 # Minimal GUI (GNOME based)
 `sudo apt install gnome-core` very basic GNOME package  
 
+# GNOME configuration  
+sudo apt install gnome-tweaks
+sudo apt install gnome-shell-extension-manager
+
+Extensions:
+	Dash to Dock
+	Hide Active Buttons
+	
 
 
 # TODO move to the script section below
 ## dotfiles
 This is a draft for the real configuration scripts  
+
+
+`sudo apt install bash-completion`  
 
 `apt list --upgradable`  
 `sudo apt update`  
