@@ -39,6 +39,7 @@ In case pf any bluetooth issues enabling the experimental features can help with
 Extensions:  
 	Dash to Dock  
 	Hide Active Buttons  
+ 	OpenWeather  
 	
 
 
