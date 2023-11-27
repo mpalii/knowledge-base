@@ -33,12 +33,12 @@ In case pf any bluetooth issues enabling the experimental features can help with
 `sudo apt install gnome-core` very basic GNOME package  
 
 # GNOME configuration  
-sudo apt install gnome-tweaks
-sudo apt install gnome-shell-extension-manager
+`sudo apt install gnome-tweaks`  
+`sudo apt install gnome-shell-extension-manager`  
 
-Extensions:
-	Dash to Dock
-	Hide Active Buttons
+Extensions:  
+	Dash to Dock  
+	Hide Active Buttons  
 	
 
 
