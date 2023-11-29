@@ -30,7 +30,7 @@ UTF-8 -> Combined - Latin, ... -> Termius -> 10x18
 In case of any bluetooth issues enabling the experimental features can help with it see [Enabling experimental features](https://wiki.archlinux.org/title/Bluetooth#Enabling_experimental_features)  
 
 # GUI (GNOME based)
-`sudo apt install gnome-core` minimal GNOME package  
+`sudo apt install gnome-core` minimal GNOME package (see the [wiki](https://wiki.debian.org/ru/Gnome))  
 `sudo apt install gnome-tweaks`  
 `sudo apt install gnome-shell-extension-manager`  
 
