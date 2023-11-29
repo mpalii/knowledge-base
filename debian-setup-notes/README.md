@@ -3,7 +3,7 @@
 - Install:
   1. Select system language: English
   2. Select location
-  3. Configure locale: United States - en_US.UTF-8
+  3. Configure locale: United Kingdom - en_GB.UTF-8
   4. Configure the keyboard: American English
   5. Configure network (The best option is to use ethernet connection)
   6. Define a hostname (some name fot the workstation)
