@@ -50,13 +50,13 @@ In case of any bluetooth issues enabling the experimental features can help with
 - 'Keyboard' - View snd Customise Shortcuts - Custom Shortcuts - gnome-terminal - ctrl + alt + t;  
 - Firefox - Open previous windows and tabs;
 - Install following [GNOME extensions](https://extensions.gnome.org/), and add browser extension:  
- - Dash to Dock  
- - Hide Activities Button by zeten30  
- - OpenWeather
+ 1. Dash to Dock  
+ 2. Hide Activities Button by zeten30  
+ 3. OpenWeather  
 - 'Tweaks' - Top Bar - Weekday, Date, Seconds, Week Numbers;
 - 'Tweaks' - Window Titlebars - Maximise, Minimise;
 - 'Extension Manager' - 'Dash to Dock' - Icon size limit: 24;
-- `Extension Manager` - 'OpenWeather' - Locations;  
+- 'Extension Manager' - 'OpenWeather' - Locations;  
 	
 
 
