@@ -29,13 +29,12 @@ UTF-8 -> Combined - Latin, ... -> Termius -> 10x18
 `sudo journalctl -p 3 -b` check system issues  
 In case pf any bluetooth issues enabling the experimental features can help with it see [Enabling experimental features](https://wiki.archlinux.org/title/Bluetooth#Enabling_experimental_features)  
 
-# Minimal GUI (GNOME based)
-`sudo apt install gnome-core` very basic GNOME package (contains Contacts, Videos, Calculator etc.)  
-OR `sudo apt install gnome-shell --no-install-recommends`  
-
-# GNOME configuration  
+# GUI (GNOME based)
+`sudo apt install gnome-core` minimal GNOME package  
 `sudo apt install gnome-tweaks`  
 `sudo apt install gnome-shell-extension-manager`  
+
+# GNOME configuration  
 
 Extensions:  
 	Dash to Dock  
