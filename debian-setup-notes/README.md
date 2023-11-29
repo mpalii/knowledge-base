@@ -35,11 +35,28 @@ In case of any bluetooth issues enabling the experimental features can help with
 `sudo apt install gnome-shell-extension-manager`  
 
 # GNOME configuration  
-
-Extensions:  
-	Dash to Dock  
-	Hide Active Buttons  
- 	OpenWeather  
+- hide redundant icons from favourite;  
+- open 'Settings';  
+- check the Wi-Fi connection;  
+- turn off the Bluetooth;  
+- change the background;
+- 'Power' show battery percentage;  
+- 'Display' change physical setup and apply;  
+- enable and customise Night Light;  
+- 'Mouse & Touchpad' change mouse and touchpad speed, enable 'Tap to Click';  
+- 'Keyboard' add Input Source (language);
+- 'Users' select picture;
+- 'Date & Time' Time Zone;
+- 'Keyboard' - View snd Customise Shortcuts - Custom Shortcuts - gnome-terminal - ctrl + alt + t;  
+- Firefox - Open previous windows and tabs;
+- Install following [GNOME extensions](https://extensions.gnome.org/), and add browser extension:  
+ - Dash to Dock  
+ - Hide Activities Button by zeten30  
+ - OpenWeather
+- 'Tweaks' - Top Bar - Weekday, Date, Seconds, Week Numbers;
+- 'Tweaks' - Window Titlebars - Maximise, Minimise;
+- 'Extension Manager' - 'Dash to Dock' - Icon size limit: 24;
+- `Extension Manager` - 'OpenWeather' - Locations;  
 	
 
 
