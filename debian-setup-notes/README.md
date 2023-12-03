@@ -25,7 +25,11 @@
 `sudo dpkg-reconfigure console-setup`  
 UTF-8 -> Combined - Latin, ... -> Termius -> 10x18  
 
-# Primary check  
+# Primary preparation and check  
+`sudo apt update`  
+`sudo apt upgrade`  
+`sudo apt install bash-completion`  
+
 `sudo journalctl -p 3 -b` check system issues  
 In case of any bluetooth issues enabling the experimental features can help with it see [Enabling experimental features](https://wiki.archlinux.org/title/Bluetooth#Enabling_experimental_features)  
 
@@ -57,15 +61,12 @@ In case of any bluetooth issues enabling the experimental features can help with
 - 'Tweaks' - Window Titlebars - Maximise, Minimise;
 - 'Extension Manager' - 'Dash to Dock' - Icon size limit: 24;
 - 'Extension Manager' - 'OpenWeather' - Locations;  
-	
 
 
-# TODO move to the script section below
-## dotfiles
+<br>
+### TODO move to the script section below
+#### dotfiles
 This is a draft for the real configuration scripts  
-
-
-`sudo apt install bash-completion`  
 
 `apt list --upgradable`  
 `sudo apt update`  
