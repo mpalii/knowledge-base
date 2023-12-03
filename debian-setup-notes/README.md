@@ -1,4 +1,4 @@
-# System install process based on Debian 12  
+# System install process (based on Debian 12)  
 - Prepare bootable USB device using the image [Download](https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-12.2.0-amd64-netinst.iso)  
 - Install:
   1. Select system language: English
@@ -6,36 +6,39 @@
   3. Configure locale: United Kingdom - en_GB.UTF-8
   4. Configure the keyboard: American English
   5. Configure network (The best option is to use ethernet connection)
-  6. Define a hostname (some name fot the workstation)
+  6. Define a hostname (name fot the workstation)
   7. Set up users and passwords
   8. Partition disks - Manual (create ESP section 1GB, for modern SSD no need to create SWAP section, create Ext4 section with the mountpoint at "/")
   9. Configure the package manager
   10. Software selection - uncheck all packages  
 - Reboot
 
-# Add user to sudoers
+# Primary system configuration
 `su --login root` switch to the root account  
-`apt install sudo` install sudo if need  
+
+`dpkg-reconfigure console-setup` Change ttl font size (optional)  
+UTF-8 -> Combined - Latin, ... -> Termius -> 10x18  
+
+`apt update` //TODO add description  
+`apt upgrade` //TODO add description  
+
+`apt install sudo` //TODO add description  
+`apt install bash-completion` //TODO add description  
+
 `groups <USERNAME>` check the list of user groups before  
 `usermod --append --group sudo <USERNAME>` add user to the sudo group  
 `groups <USERNAME>` check the list of user groups after  
+
+Perform boot check (see below)  
+
 `reboot now` perform reboot from root session  
-
-# Change ttl font size (optional)  
-`sudo dpkg-reconfigure console-setup`  
-UTF-8 -> Combined - Latin, ... -> Termius -> 10x18  
-
-# Primary preparation   
-`sudo apt update`  
-`sudo apt upgrade`  
-`sudo apt install bash-completion`  
 
 # GUI (GNOME based)
 `sudo apt install gnome-core` minimal GNOME package (see the [wiki](https://wiki.debian.org/ru/Gnome))  
 `sudo apt install gnome-tweaks`  
 `sudo apt install gnome-shell-extension-manager`  
 
-# GNOME configuration  
+## GNOME configuration  
 - hide redundant icons from favourite;  
 - open 'Settings';  
 - check the Wi-Fi connection;  
@@ -59,12 +62,11 @@ UTF-8 -> Combined - Latin, ... -> Termius -> 10x18
 - 'Extension Manager' - 'Dash to Dock' - Icon size limit: 24;
 - 'Extension Manager' - 'OpenWeather' - Locations;
 
-# Promary check  
+# Boot check  
 `sudo journalctl -p 3 -b` check system issues  
 In case of any bluetooth issues enabling the experimental features can help with it see [Enabling experimental features](https://wiki.archlinux.org/title/Bluetooth#Enabling_experimental_features)  
 
 
-<br/>
 ### TODO move to the script section below
 #### dotfiles
 This is a draft for the real configuration scripts  
