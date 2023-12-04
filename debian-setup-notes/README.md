@@ -33,11 +33,18 @@ Perform boot check (see below)
 
 `reboot now` perform reboot from root session  
 
-# GUI (GNOME based)
-`sudo apt install gnome-core` minimal GNOME package (see the [wiki](https://wiki.debian.org/ru/Gnome))  
+# GUI (GNOME based, see the [wiki](https://wiki.debian.org/ru/Gnome))  
 `sudo apt install gnome-shell`  
+`sudo apt install gnome-terminal`  
 `sudo apt install gnome-tweaks`  
-`sudo apt install gnome-shell-extension-manager`  
+`sudo apt install firefox-esr`  
+
+`sudo apt install snapd`  
+`sudo snap install spotify`  
+
+`sudo apt install flatpak`  
+`sudo apt install gnome-software-plugin-flatpak`  
+`sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo`  
 
 ## GNOME configuration  
 - hide redundant icons from favourite;  
