@@ -35,6 +35,7 @@ Perform boot check (see below)
 
 # GUI (GNOME based)
 `sudo apt install gnome-core` minimal GNOME package (see the [wiki](https://wiki.debian.org/ru/Gnome))  
+`sudo apt install gnome-shell`  
 `sudo apt install gnome-tweaks`  
 `sudo apt install gnome-shell-extension-manager`  
 
