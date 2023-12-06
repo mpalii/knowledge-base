@@ -14,28 +14,34 @@
 - Reboot
 
 # Primary system configuration
-`su --login root` switch to the root account  
+`su --login root` switch to the root account (or login as root initially)  
 
 `dpkg-reconfigure console-setup` Change ttl font size (optional)  
 UTF-8 -> Combined - Latin, ... -> Termius -> 10x18  
 
-`apt update` //TODO add description  
-`apt upgrade` //TODO add description  
+`apt update` update list of available packages  
+`apt upgrade` upgrade the system by installing/upgrading packages  
 
-`apt install sudo` //TODO add description  
-`apt install bash-completion` //TODO add description  
+//TODO bootstrap candidate  
+`apt install {}` install packages (see below)  
+**sudo** Provide limited super user privileges to specific users  
+**bash-completion** programmable completion for the bash shell  
+**aptitude** high-level interface to the package manager  
+**gnome-shell** graphical shell for the GNOME desktop (see the [wiki](https://wiki.debian.org/ru/Gnome))  
+**gnome-terminal** GNOME terminal emulator application  
+**gnome-tweaks** tool to adjust advanced configuration settings for GNOME  
+**snapd** Daemon and tooling that enable snap packages  
+**flatpak** Application deployment framework for desktop apps  
+**gnome-software-plugin-flatpak** Flatpak support for GNOME Software  
+**info** Standalone GNU Info documentation browser  
+
+`flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo` add a remote repository  
 
 `groups <USERNAME>` check the list of user groups before  
 `usermod --append --group sudo <USERNAME>` add user to the sudo group  
 `groups <USERNAME>` check the list of user groups after  
 
-Perform boot check (see below)  
-
 `reboot now` perform reboot from root session  
-
-# GUI (GNOME based, see the [wiki](https://wiki.debian.org/ru/Gnome))  
-`sudo apt install gnome-shell gnome-terminal gnome-tweaks snapd flatpak gnome-software-plugin-flatpak`     
-`sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo`  
 
 ## GNOME configuration  
 - hide redundant icons from favourite;  
