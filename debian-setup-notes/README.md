@@ -26,14 +26,12 @@ UTF-8 -> Combined - Latin, ... -> Termius -> 10x18
 `apt install {}` install packages (see below)  
 **sudo** Provide limited super user privileges to specific users  
 **bash-completion** programmable completion for the bash shell  
-**aptitude** high-level interface to the package manager  
 **gnome-shell** graphical shell for the GNOME desktop (see the [wiki](https://wiki.debian.org/ru/Gnome))  
 **gnome-terminal** GNOME terminal emulator application  
 **gnome-tweaks** tool to adjust advanced configuration settings for GNOME  
 **snapd** Daemon and tooling that enable snap packages  
 **flatpak** Application deployment framework for desktop apps  
 **gnome-software-plugin-flatpak** Flatpak support for GNOME Software  
-**info** Standalone GNU Info documentation browser  
 
 `flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo` add a remote repository  
 
