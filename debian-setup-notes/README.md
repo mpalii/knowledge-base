@@ -22,6 +22,7 @@ UTF-8 -> Combined - Latin, ... -> Termius -> 10x18
 `apt update` update list of available packages  
 `apt upgrade` upgrade the system by installing/upgrading packages  
 
+`apt show {}` show package details  
 //TODO bootstrap candidate  
 `apt install {}` install packages (see below)  
 **sudo** Provide limited super user privileges to specific users  
@@ -32,6 +33,8 @@ UTF-8 -> Combined - Latin, ... -> Termius -> 10x18
 **snapd** Daemon and tooling that enable snap packages  
 **flatpak** Application deployment framework for desktop apps  
 **gnome-software-plugin-flatpak** Flatpak support for GNOME Software  
+**firefox-esr** Mozilla Firefox web browser - Extended Support Release (ESR)  
+
 
 `flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo` add a remote repository  
 
