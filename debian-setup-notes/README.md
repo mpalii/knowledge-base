@@ -33,6 +33,7 @@ UTF-8 -> Combined - Latin, ... -> Termius -> 10x18
 **snapd** Daemon and tooling that enable snap packages  
 **flatpak** Application deployment framework for desktop apps  
 **gnome-software-plugin-flatpak** Flatpak support for GNOME Software  
+**nautilus** file manager and graphical shell for GNOME  
 **firefox-esr** Mozilla Firefox web browser - Extended Support Release (ESR)  
 
 
