@@ -61,13 +61,13 @@ UTF-8 -> Combined - Latin, ... -> Termius -> 10x18
 - 'Keyboard' - View snd Customise Shortcuts - Custom Shortcuts - gnome-terminal - ctrl + alt + t;  
 - Firefox - Open previous windows and tabs;
 - Install following [GNOME extensions](https://extensions.gnome.org/), and add browser extension:  
-  - Dash to Dock
-  - Hide Activities Button by zeten30
-  - OpenWeather  
+  - [Dash to Dock](https://extensions.gnome.org/extension/307/dash-to-dock/)  
+  - [Hide Activities Button](https://extensions.gnome.org/extension/744/hide-activities-button/)  
+  - [OpenWeather](https://extensions.gnome.org/extension/750/openweather/)  
 - 'Tweaks' - Top Bar - Weekday, Date, Seconds, Week Numbers;
 - 'Tweaks' - Window Titlebars - Maximise, Minimise;
-- 'Extension Manager' - 'Dash to Dock' - Icon size limit: 24;
-- 'Extension Manager' - 'OpenWeather' - Locations;
+- 'Extensions' - 'Dash to Dock' - Icon size limit: 24;
+- 'Extensions' - 'OpenWeather' - Locations;
 
 # Boot check  
 `sudo journalctl -p 3 -b` check system issues  
