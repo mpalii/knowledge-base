@@ -35,7 +35,9 @@ UTF-8 -> Combined - Latin, ... -> Termius -> 10x18
 **gnome-software-plugin-flatpak** Flatpak support for GNOME Software  
 **nautilus** file manager and graphical shell for GNOME  
 **firefox-esr** Mozilla Firefox web browser - Extended Support Release (ESR)  
-
+**neovim** heavily refactored vim fork; Vi IMproved - enhanced vi editor  
+**tree** displays an indented directory tree, in color  
+**git** fast, scalable, distributed revision control system  
 
 `flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo` add a remote repository  
 
@@ -92,9 +94,6 @@ https://snapcraft.io/
 `sudo snap install slack`  
 `sudo snap install spotify`  
 
-`sudo apt install tree`  
-`sudo apt install neovim`  
-`sudo apt install git`  
 `sudo apt install openjdk-17-jdk`  
 `sudo apt install openjdk-17-jdk-source`  
 `sudo apt install openjdk-17-jdk-doc`  
