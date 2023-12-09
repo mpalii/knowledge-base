@@ -38,6 +38,14 @@ UTF-8 -> Combined - Latin, ... -> Termius -> 10x18
 **neovim** heavily refactored vim fork; Vi IMproved - enhanced vi editor  
 **tree** displays an indented directory tree, in color  
 **git** fast, scalable, distributed revision control system  
+**apostrophe** Distraction free Markdown editor  
+**gcc-avr** GNU C compiler (cross compiler for avr)  
+**avr-libc** Standard C library for Atmel AVR development  
+**avrdude** software for programming Atmel AVR microcontrollers  
+
+`snap install {}` install snaps  
+**code --classic** Visual Studio Code  
+**spotify** Spotify  
 
 `flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo` add a remote repository  
 
