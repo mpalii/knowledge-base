@@ -41,6 +41,9 @@ UTF-8 -> Combined - Latin, ... -> Termius -> 10x18
 **gcc-avr** GNU C compiler (cross compiler for avr)  
 **avr-libc** Standard C library for Atmel AVR development  
 **avrdude** software for programming Atmel AVR microcontrollers  
+**make**  
+**gcc**  
+**gedit**  
 
 `snap install code --classic` Visual Studio Code  
 `snap install spotify` Spotify  
