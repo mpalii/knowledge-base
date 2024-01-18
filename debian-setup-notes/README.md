@@ -44,6 +44,10 @@ UTF-8 -> Combined - Latin, ... -> Termius -> 10x18
 **make**  
 **gcc**  
 **gedit**  
+**vlc**  
+**zathura**  
+**picocom**  
+
 
 `snap install code --classic` Visual Studio Code  
 `snap install spotify` Spotify  
