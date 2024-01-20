@@ -73,7 +73,7 @@ UTF-8 -> Combined - Latin, ... -> Termius -> 10x18
 - 'Keyboard' add Input Source (language);
 - 'Users' select picture;
 - 'Date & Time' Time Zone;
-- 'Keyboard' - View snd Customise Shortcuts - Custom Shortcuts - gnome-terminal --full-screen - ctrl + alt + t;  
+- 'Keyboard' - View snd Customise Shortcuts - Custom Shortcuts - gnome-terminal --window --maximize - ctrl + alt + t;  
 - Firefox - Open previous windows and tabs;
 - Install following [GNOME extensions](https://extensions.gnome.org/), and add browser extension:  
   - [Dash to Dock](https://extensions.gnome.org/extension/307/dash-to-dock/)  
