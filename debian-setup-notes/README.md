@@ -40,6 +40,7 @@ UTF-8 -> Combined - Latin, ... -> Termius -> 10x18
 **git** fast, scalable, distributed revision control system  
 **texinfo** software documentation system  
 **bzip2** a block-sorting file compressor  
+**curl** a tool for transfering data from or to a server  
 **gedit** general-purpose text editor  
 **vlc** the VLC media player  
 **zathura** a document viewer  
