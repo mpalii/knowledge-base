@@ -38,14 +38,19 @@ UTF-8 -> Combined - Latin, ... -> Termius -> 10x18
 **neovim** heavily refactored vim fork; Vi IMproved - enhanced vi editor  
 **tree** displays an indented directory tree, in color  
 **git** fast, scalable, distributed revision control system  
+**texinfo** software documentation system  
+**bzip2** a block-sorting file compressor  
+**gedit** general-purpose text editor  
+**vlc** the VLC media player  
+**zathura** a document viewer  
+
+
+
+**make**  
+**gcc**  
 **gcc-avr** GNU C compiler (cross compiler for avr)  
 **avr-libc** Standard C library for Atmel AVR development  
 **avrdude** software for programming Atmel AVR microcontrollers  
-**make**  
-**gcc**  
-**gedit**  
-**vlc**  
-**zathura**  
 **picocom**  
 
 
