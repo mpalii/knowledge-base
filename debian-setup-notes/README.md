@@ -90,7 +90,7 @@ UTF-8 -> Combined - Latin, ... -> Termius -> 10x18
 - 'Tweaks' - Window Titlebars - Maximise, Minimise;
 - 'Extensions' - 'Dash to Dock' - Icon size limit: 24;
 - 'Extensions' - 'OpenWeather' - Locations;
-- 'Nautilus' - Show Hidden Files;
+- 'Nautilus' - Show Hidden Files, Icon Size (Zoom Out), List View;
 
 # Boot check  
 `sudo journalctl -p 3 -b` check system issues  
