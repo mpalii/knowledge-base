@@ -23,10 +23,17 @@ UTF-8 -> Combined - Latin, ... -> Termius -> 10x18
 `apt upgrade` upgrade the system by installing/upgrading packages  
 
 `apt show {}` show package details  
-//TODO bootstrap candidate  
 `apt install {}` install packages (see below)  
 **sudo** Provide limited super user privileges to specific users  
 **bash-completion** programmable completion for the bash shell  
+
+`groups <USERNAME>` check the list of user groups before  
+`usermod --append --group sudo <USERNAME>` add user to the sudo group  
+`groups <USERNAME>` check the list of user groups after  
+
+`reboot now` perform reboot from root session  
+
+//TODO bootstrap candidate  
 **gnome-shell** graphical shell for the GNOME desktop (see the [wiki](https://wiki.debian.org/ru/Gnome))  
 **gnome-terminal** GNOME terminal emulator application  
 **gnome-tweaks** tool to adjust advanced configuration settings for GNOME  
@@ -44,27 +51,21 @@ UTF-8 -> Combined - Latin, ... -> Termius -> 10x18
 **gedit** general-purpose text editor  
 **vlc** the VLC media player  
 **zathura** a document viewer  
+**make** GNU make utility to maintaine groups of programs  
+**gcc** GNU compiler collection  
+**libreoffice** a full-featured office productivity suite  
 
-
-
-**make**  
-**gcc**  
 **gcc-avr** GNU C compiler (cross compiler for avr)  
 **avr-libc** Standard C library for Atmel AVR development  
 **avrdude** software for programming Atmel AVR microcontrollers  
 **picocom**  
 
+`flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo` add a remote repository  
 
 `snap install code --classic` Visual Studio Code  
 `snap install spotify` Spotify  
 
-`flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo` add a remote repository  
-
-`groups <USERNAME>` check the list of user groups before  
-`usermod --append --group sudo <USERNAME>` add user to the sudo group  
-`groups <USERNAME>` check the list of user groups after  
-
-`reboot now` perform reboot from root session  
+`sudo flatpak install --from https://flathub.org/repo/appstream/org.kicad.KiCad.flatpakref`  
 
 ## GNOME configuration  
 - hide redundant icons from favourite;  
@@ -89,6 +90,7 @@ UTF-8 -> Combined - Latin, ... -> Termius -> 10x18
 - 'Tweaks' - Window Titlebars - Maximise, Minimise;
 - 'Extensions' - 'Dash to Dock' - Icon size limit: 24;
 - 'Extensions' - 'OpenWeather' - Locations;
+- 'Nautilus' - Show Hidden Files;
 
 # Boot check  
 `sudo journalctl -p 3 -b` check system issues  
