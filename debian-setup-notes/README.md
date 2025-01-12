@@ -55,10 +55,11 @@ UTF-8 -> Combined - Latin, ... -> Termius -> 10x18
 **gcc** GNU compiler collection  
 **libreoffice** a full-featured office productivity suite  
 
+**binutils-avr** Binary utilities supporting Atmel's AVR targets  
 **gcc-avr** GNU C compiler (cross compiler for avr)  
 **avr-libc** Standard C library for Atmel AVR development  
 **avrdude** software for programming Atmel AVR microcontrollers  
-**picocom**  
+**picocom** minimal dumb-terminal emulation program  
 
 `flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo` add a remote repository  
 
