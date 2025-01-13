@@ -67,6 +67,7 @@ UTF-8 -> Combined - Latin, ... -> Termius -> 10x18
 `snap install spotify` Spotify  
 
 `sudo flatpak install --from https://flathub.org/repo/appstream/org.kicad.KiCad.flatpakref`  
+`sudo flatpak install flathub org.gnome.Calculator`  
 
 ## GNOME configuration  
 - hide redundant icons from favourite;  
