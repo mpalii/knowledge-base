@@ -53,6 +53,7 @@ UTF-8 -> Combined - Latin, ... -> Termius -> 10x18
 **zathura** a document viewer  
 **make** GNU make utility to maintaine groups of programs  
 **gcc** GNU compiler collection  
+**hexedit** view and edit files in hexadecimal or in ASCII  
 **libreoffice** a full-featured office productivity suite  
 
 **binutils-avr** Binary utilities supporting Atmel's AVR targets  
