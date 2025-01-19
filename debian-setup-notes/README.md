@@ -123,3 +123,5 @@ https://snapcraft.io/
 `sudo apt install openjdk-17-jdk-doc`  
 `sudo update-alternatives --config java`  
 `sudo apt install maven`  
+
+https://phoenixnap.com/kb/swap-space
