@@ -125,4 +125,6 @@ https://snapcraft.io/
 `sudo apt install maven`  
 
 https://phoenixnap.com/kb/swap-space  
-https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/8/html/managing_storage_devices/getting-started-with-swap_managing-storage-devices#overview-of-swap-space_getting-started-with-swap
+https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/8/html/managing_storage_devices/getting-started-with-swap_managing-storage-devices#overview-of-swap-space_getting-started-with-swap  
+https://askubuntu.com/questions/49109/i-have-16gb-ram-do-i-need-32gb-swap  
+
