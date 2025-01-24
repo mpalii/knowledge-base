@@ -55,6 +55,9 @@ UTF-8 -> Combined - Latin, ... -> Termius -> 10x18
 **gcc** GNU compiler collection  
 **hexedit** view and edit files in hexadecimal or in ASCII  
 **libreoffice** a full-featured office productivity suite  
+**openjdk-17-jdk** OpenJDK Development Kit (JDK)  
+**openjdk-17-source** OpenJDK Development Kit (JDK) source files  
+**openjdk-17-doc** OpenJDK Development Kit (JDK) documentation  
 
 **binutils-avr** Binary utilities supporting Atmel's AVR targets  
 **gcc-avr** GNU C compiler (cross compiler for avr)  
@@ -62,10 +65,12 @@ UTF-8 -> Combined - Latin, ... -> Termius -> 10x18
 **avrdude** software for programming Atmel AVR microcontrollers  
 **picocom** minimal dumb-terminal emulation program  
 
-`flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo` add a remote repository  
-
+https://snapcraft.io/  
+`sudo snap install intellij-idea-community --classic`  
 `snap install code --classic` Visual Studio Code  
 `snap install spotify` Spotify  
+
+`flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo` add a remote repository  
 
 `sudo flatpak install --from https://flathub.org/repo/appstream/org.kicad.KiCad.flatpakref`  
 `sudo flatpak install flathub org.gnome.Calculator`  
@@ -113,14 +118,8 @@ This is a draft for the real configuration scripts
 
 https://www.freecodecamp.org/news/dotfiles-what-is-a-dot-file-and-how-to-create-it-in-mac-and-linux/  
 
-https://snapcraft.io/  
-`sudo snap install intellij-idea-community --classic`  
 `sudo snap install slack`  
-`sudo snap install spotify`  
 
-`sudo apt install openjdk-17-jdk`  
-`sudo apt install openjdk-17-jdk-source`  
-`sudo apt install openjdk-17-jdk-doc`  
 `sudo update-alternatives --config java`  
 `sudo apt install maven`  
 
