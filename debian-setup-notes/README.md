@@ -66,6 +66,8 @@ UTF-8 -> Combined - Latin, ... -> Termius -> 10x18
 **avrdude** software for programming Atmel AVR microcontrollers  
 **picocom** minimal dumb-terminal emulation program  
 
+`sudo update-alternatives --config <application>` maintain symbolic links determining default commands  
+
 https://snapcraft.io/  
 `sudo snap refresh --list`  
 `sudo snap refresh`  
@@ -73,6 +75,7 @@ https://snapcraft.io/
 `sudo snap install intellij-idea-community --classic` IntelliJ IDEA Community Edition  
 `sudo snap install code --classic` Visual Studio Code  
 `sudo snap install spotify` Spotify  
+`sudo snap install slack` Slack  
 
 https://flathub.org/  
 `flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo` add a remote repository  
@@ -115,12 +118,9 @@ In case of any bluetooth issues enabling the experimental features can help with
 This is a draft for the real configuration scripts  
 
 
-https://www.freecodecamp.org/news/dotfiles-what-is-a-dot-file-and-how-to-create-it-in-mac-and-linux/  
-
-`sudo snap install slack`  
-
-`sudo update-alternatives --config java`  
-
-https://phoenixnap.com/kb/swap-space  
-https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/8/html/managing_storage_devices/getting-started-with-swap_managing-storage-devices#overview-of-swap-space_getting-started-with-swap  
-https://askubuntu.com/questions/49109/i-have-16gb-ram-do-i-need-32gb-swap  
+- [Dotfiles – What is a Dotfile and How to Create it in Mac and Linux](https://www.freecodecamp.org/news/dotfiles-what-is-a-dot-file-and-how-to-create-it-in-mac-and-linux/)  
+- [Swap Space in Linux: What It Is & How It Works](https://phoenixnap.com/kb/swap-space)
+- [Getting started with swap](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/8/html/managing_storage_devices/getting-started-with-swap_managing-storage-devices#overview-of-swap-space_getting-started-with-swap)
+- [I have 16GB RAM. Do I need 32GB swap?](https://askubuntu.com/questions/49109/i-have-16gb-ram-do-i-need-32gb-swap)
+- [What is the difference between /opt and /usr/local?](https://unix.stackexchange.com/questions/11544/what-is-the-difference-between-opt-and-usr-local)
+- [/usr/bin vs /usr/local/bin on Linux](https://unix.stackexchange.com/questions/8656/usr-bin-vs-usr-local-bin-on-linux)
