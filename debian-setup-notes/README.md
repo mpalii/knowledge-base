@@ -82,7 +82,7 @@ https://flathub.org/
 
 `sudo flatpak install --from https://flathub.org/repo/appstream/org.kicad.KiCad.flatpakref`  
 `sudo flatpak install flathub org.gnome.Calculator`  
-`sudo flatpak install flathub org.gnome.Extensions`  
+`sudo flatpak install flathub com.mattjakeman.ExtensionManager`  
 
 # GNOME configuration  
 - hide redundant icons from favourite;  
