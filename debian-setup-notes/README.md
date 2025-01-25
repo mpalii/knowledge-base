@@ -58,6 +58,7 @@ UTF-8 -> Combined - Latin, ... -> Termius -> 10x18
 **openjdk-17-jdk** OpenJDK Development Kit (JDK)  
 **openjdk-17-source** OpenJDK Development Kit (JDK) source files  
 **openjdk-17-doc** OpenJDK Development Kit (JDK) documentation  
+**mvn** Apache Maven software project management and comprehension tool  
 
 **binutils-avr** Binary utilities supporting Atmel's AVR targets  
 **gcc-avr** GNU C compiler (cross compiler for avr)  
@@ -119,9 +120,7 @@ https://www.freecodecamp.org/news/dotfiles-what-is-a-dot-file-and-how-to-create-
 `sudo snap install slack`  
 
 `sudo update-alternatives --config java`  
-`sudo apt install maven`  
 
 https://phoenixnap.com/kb/swap-space  
 https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/8/html/managing_storage_devices/getting-started-with-swap_managing-storage-devices#overview-of-swap-space_getting-started-with-swap  
 https://askubuntu.com/questions/49109/i-have-16gb-ram-do-i-need-32gb-swap  
-
