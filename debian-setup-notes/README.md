@@ -1,5 +1,5 @@
 # System install process (based on Debian 12)  
-- Prepare bootable USB device using the image [Download](https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-12.2.0-amd64-netinst.iso)  
+- Prepare bootable USB device using the image [Download](https://cdimage.debian.org/debian-cd/current/amd64/iso-dvd/)  
 - Install:
   1. Select system language: English
   2. Select location
