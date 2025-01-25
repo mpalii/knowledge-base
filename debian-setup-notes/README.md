@@ -89,7 +89,8 @@ https://flathub.org/
 - check the Wi-Fi connection;  
 - turn off the Bluetooth;  
 - change the background;
-- 'Power' show battery percentage;  
+- 'Power' show battery percentage;
+- 'Power' - 'Autimatic Suspend' - 'Plugged In' - 'Off';  
 - 'Display' change physical setup and apply;  
 - enable and customise Night Light;  
 - 'Mouse & Touchpad' change mouse and touchpad speed, enable 'Tap to Click';  
