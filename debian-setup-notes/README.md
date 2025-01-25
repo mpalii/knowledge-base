@@ -58,7 +58,7 @@ UTF-8 -> Combined - Latin, ... -> Termius -> 10x18
 **openjdk-17-jdk** OpenJDK Development Kit (JDK)  
 **openjdk-17-source** OpenJDK Development Kit (JDK) source files  
 **openjdk-17-doc** OpenJDK Development Kit (JDK) documentation  
-**mvn** Apache Maven software project management and comprehension tool  
+**maven** Apache Maven software project management and comprehension tool  
 
 **binutils-avr** Binary utilities supporting Atmel's AVR targets  
 **gcc-avr** GNU C compiler (cross compiler for avr)  
