@@ -66,9 +66,12 @@ UTF-8 -> Combined - Latin, ... -> Termius -> 10x18
 **picocom** minimal dumb-terminal emulation program  
 
 https://snapcraft.io/  
-`sudo snap install intellij-idea-community --classic`  
-`snap install code --classic` Visual Studio Code  
-`snap install spotify` Spotify  
+`sudo snap refresh --list`  
+`sudo snap refresh`  
+
+`sudo snap install intellij-idea-community --classic` IntelliJ IDEA Community Edition  
+`sudo snap install code --classic` Visual Studio Code  
+`sudo snap install spotify` Spotify  
 
 `flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo` add a remote repository  
 
@@ -109,12 +112,6 @@ In case of any bluetooth issues enabling the experimental features can help with
 #### dotfiles
 This is a draft for the real configuration scripts  
 
-`apt list --upgradable`  
-`sudo apt update`  
-`sudo apt upgrade`  
-
-`sudo snap refresh --list`  
-`sudo snap refresh`  
 
 https://www.freecodecamp.org/news/dotfiles-what-is-a-dot-file-and-how-to-create-it-in-mac-and-linux/  
 
