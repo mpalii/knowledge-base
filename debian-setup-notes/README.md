@@ -83,7 +83,7 @@ https://flathub.org/
 `sudo flatpak install --from https://flathub.org/repo/appstream/org.kicad.KiCad.flatpakref`  
 `sudo flatpak install flathub org.gnome.Calculator`  
 
-## GNOME configuration  
+# GNOME configuration  
 - hide redundant icons from favourite;  
 - open 'Settings';  
 - check the Wi-Fi connection;  
@@ -112,12 +112,7 @@ https://flathub.org/
 `sudo journalctl -p 3 -b` check system issues  
 In case of any bluetooth issues enabling the experimental features can help with it see [Enabling experimental features](https://wiki.archlinux.org/title/Bluetooth#Enabling_experimental_features)  
 
-
-### TODO move to the script section below
-#### dotfiles
-This is a draft for the real configuration scripts  
-
-
+# See also:  
 - [Dotfiles – What is a Dotfile and How to Create it in Mac and Linux](https://www.freecodecamp.org/news/dotfiles-what-is-a-dot-file-and-how-to-create-it-in-mac-and-linux/)  
 - [Swap Space in Linux: What It Is & How It Works](https://phoenixnap.com/kb/swap-space)
 - [Getting started with swap](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/8/html/managing_storage_devices/getting-started-with-swap_managing-storage-devices#overview-of-swap-space_getting-started-with-swap)
