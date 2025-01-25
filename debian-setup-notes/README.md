@@ -73,7 +73,7 @@ https://snapcraft.io/
 `sudo snap install code --classic` Visual Studio Code  
 `sudo snap install spotify` Spotify  
 
-https://flathub.org/
+https://flathub.org/  
 `flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo` add a remote repository  
 
 `sudo flatpak install --from https://flathub.org/repo/appstream/org.kicad.KiCad.flatpakref`  
