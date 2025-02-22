@@ -51,7 +51,7 @@ UTF-8 -> Combined - Latin, ... -> Termius -> 10x18
 **curl** a tool for transfering data from or to a server  
 **gedit** general-purpose text editor  
 **vlc** the VLC media player  
-**zathura** a document viewer  
+**zathura** a document viewer (see https://man.cx/zathura)  
 **make** GNU make utility to maintaine groups of programs  
 **gcc** GNU compiler collection  
 **hexedit** view and edit files in hexadecimal or in ASCII  
