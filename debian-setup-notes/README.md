@@ -42,7 +42,7 @@ UTF-8 -> Combined - Latin, ... -> Termius -> 10x18
 **gnome-software-plugin-flatpak** Flatpak support for GNOME Software  
 **nautilus** file manager and graphical shell for GNOME  
 **firefox-esr** Mozilla Firefox web browser - Extended Support Release (ESR)  
-**vim** Vi IMproved, a programmer's text editor  (see https://man.archlinux.org/man/vimtutor.1.en)
+**vim** Vi IMproved, a programmer's text editor (see https://man.archlinux.org/man/vimtutor.1.en)  
 **neovim** heavily refactored vim fork; Vi IMproved - enhanced vi editor  
 **tree** displays an indented directory tree, in color  
 **git** fast, scalable, distributed revision control system  
