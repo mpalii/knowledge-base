@@ -75,6 +75,8 @@ https://snapcraft.io/
 `sudo snap refresh --list`  
 `sudo snap refresh`  
 
+`sudo snap install core` Snap runtime environment  
+`sudo snap install core20` Snap runtime environment  
 `sudo snap install intellij-idea-community --classic` IntelliJ IDEA Community Edition  
 `sudo snap install code --classic` Visual Studio Code  
 `sudo snap install spotify` Spotify  
