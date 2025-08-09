@@ -8,7 +8,7 @@
   5. Configure network (The best option is to use ethernet connection)
   6. Define a hostname (name fot the workstation)
   7. Set up users and passwords
-  8. Partition disks - Manual (create ESP section 1GB, SWAP section - 1.5x of RAM size in order to support hibernation, create Ext4 section with the mountpoint at "/")
+  8. Partition disks - Manual (create ESP section 1GB, SWAP section - 1.5 times the amount of RAM to support hibernation, create Ext4 section with the mountpoint at "/")
   9. Configure the package manager
   10. Software selection - uncheck all packages  
 - Reboot
