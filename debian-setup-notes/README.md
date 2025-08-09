@@ -97,6 +97,7 @@ https://flathub.org/
 - turn off the Bluetooth;  
 - change the background;
 - 'Power' show battery percentage;
+- 'Power' - 'Power Button Behaviour' - 'Hibernate';
 - 'Power' - 'Autimatic Suspend' - 'Plugged In' - 'Off';  
 - 'Display' change physical setup and apply;  
 - enable and customise Night Light;  
