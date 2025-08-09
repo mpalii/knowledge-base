@@ -62,6 +62,7 @@ UTF-8 -> Combined - Latin, ... -> Termius -> 10x18
 **maven** Apache Maven software project management and comprehension tool  
 **neofetch** A fast, highly customizable system info script  
 **btop** Resource monitor that shows usage and stats for processor, memory, disks, network and processes  
+**cutecom** graphical serial terminal  
 
 **binutils-avr** Binary utilities supporting Atmel's AVR targets  
 **gcc-avr** GNU C compiler (cross compiler for avr)  
