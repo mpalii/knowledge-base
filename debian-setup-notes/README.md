@@ -1,5 +1,5 @@
 # System install process (based on Debian 12)  
-- Prepare bootable USB device using the image [Download](https://cdimage.debian.org/debian-cd/current/amd64/iso-dvd/)  
+- Prepare bootable USB device using the image [Download](https://www.debian.org/CD/netinst/)  
 - Install:
   1. Select system language: English
   2. Select location
@@ -8,7 +8,7 @@
   5. Configure network (The best option is to use ethernet connection)
   6. Define a hostname (name fot the workstation)
   7. Set up users and passwords
-  8. Partition disks - Manual (create ESP section 1GB, for modern SSD no need to create SWAP section, create Ext4 section with the mountpoint at "/")
+  8. Partition disks - Manual (create ESP section 1GB, SWAP section - 1.5x of RAM size in order to support hibernation, create Ext4 section with the mountpoint at "/")
   9. Configure the package manager
   10. Software selection - uncheck all packages  
 - Reboot
