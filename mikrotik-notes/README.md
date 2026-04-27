@@ -25,3 +25,5 @@
 /user/disable admin
 
 /system/reboot  
+/system/shutdown  
+/log/print  
