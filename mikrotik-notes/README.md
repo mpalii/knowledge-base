@@ -56,6 +56,7 @@ if needed
 limit guest speed  
 /queue/simple/print 
 /queue/simple/add name=guest-limit target=192.168.50.0/24 max-limit=5M/5M  
+/ip/firewall/filter/disable [find action=fasttrack-connection]  
 
 🧪 Проверка
 
