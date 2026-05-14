@@ -8,5 +8,7 @@ apt install sudo
 apt install bash-completion  
 
 Add user:  
-(sudo) adduser <USERNAME>  
-(sudo) usermod --append --groups sudo <USERNAME>  
+(sudo) adduser USERNAME  
+(sudo) usermod --append --groups sudo USERNAME  
+id USERNAME  
+getent passwd USERNAME  
