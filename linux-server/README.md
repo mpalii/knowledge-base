@@ -45,3 +45,12 @@ FIREWALL
 (sudo) ufw enable  
 (sudo) ufw allow from 192.168.88.0/24 to any port 22 proto tcp comment 'SSH (only from home LAN)'  
 (sudo) ufw delete RULE_NUMBER  
+
+NTP service  
+timedatectl  
+sudo apt install chrony  
+systemctl status chrony  
+chronyc tracking  
+chronyc sources  
+timedatectl list-timezones | grep -i "kyiv"  
+sudo timedatectl set-timezone Europe/Kyiv  
