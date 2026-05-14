@@ -19,3 +19,7 @@ Delete user:
 (sudo) userdel --remove USERNAME  
 id USERNAME  
 getent passwd USERNAME  
+
+Delete group:  
+getent group  
+(sudo) groupdel USERNAME  
