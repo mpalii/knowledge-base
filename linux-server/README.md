@@ -32,3 +32,16 @@ systemctl status ssh
 ip address  
 hostname --all-ip-addresses  
 ssh USERNAME@IP_ADDRESS  
+
+FIREWALL  
+(sudo) apt install ufw  
+(sudo) ufw version  
+(sudo) ufw status  
+(sudo) ufw status verbose  
+(sudo) ufw status numbered  
+(sudo) ufw default deny incoming  
+(sudo) ufw default allow outgoing  
+(sudo) ufw allow ssh  
+(sudo) ufw enable  
+(sudo) ufw allow from 192.168.88.0/24 to any port 22 proto tcp comment 'SSH (only from home LAN)'  
+(sudo) ufw delete RULE_NUMBER  
