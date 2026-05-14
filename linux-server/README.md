@@ -23,3 +23,12 @@ getent passwd USERNAME
 Delete group:  
 getent group  
 (sudo) groupdel USERNAME  
+
+SSH  
+(sudo) apt install openssh-server  
+systemctl status ssh  
+(sudo) systemctl enable ssh  
+(sudo) systemctl start ssh  
+ip address  
+hostname --all-ip-addresses  
+ssh USERNAME@IP_ADDRESS  
