@@ -57,4 +57,6 @@ sudo timedatectl set-timezone Europe/Kyiv
 
 REBOOT hang fix:  
 sudo nano /etc/default/grub  
-GRUB_CMDLINE_LINUX_DEFAULT="quiet pcie_aspm=off e1000e.SmartPowerDownEnable=0"  
+GRUB_CMDLINE_LINUX_DEFAULT="quiet pcie_aspm=off e1000e.SmartPowerDownEnable=0 reboot=efi,reboot=p,reboot=acpi"  
+sudo update-grub  
+sudo reboot  
