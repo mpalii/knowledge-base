@@ -7,6 +7,7 @@ apt upgrade
 apt install sudo  
 apt install bash-completion  
 apt install man  
+apt install tree  
 
 Add user:  
 (sudo) adduser USERNAME  
@@ -54,6 +55,36 @@ chronyc tracking
 chronyc sources  
 timedatectl list-timezones | grep -i "kyiv"  
 sudo timedatectl set-timezone Europe/Kyiv  
+
+TORRENT service  
+sudo apt install qbittorrent-nox  
+sudo adduser --system --group qbittorrent  
+id qbittorrent  
+sudo mkdir -p /srv/qbittorrent/{downloads,incomplete,config}  
+sudo chown -R qbittorrent:qbittorrent /srv/qbittorrent  
+sudo nano /etc/systemd/system/qbittorrent.service  
+```  
+[Unit]
+Description=qBittorrent Daemon
+After=network.target
+
+[Service]
+User=qbittorrent
+Group=qbittorrent
+ExecStart=/usr/bin/qbittorrent-nox --webui-port=8094 --profile=/srv/qbittorrent/config
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+```
+sudo systemctl daemon-reload  
+sudo systemctl enable --now qbittorrent  
+sudo systemctl status qbittorrent
+sudo systemctl daemon-reload (if needed)  
+sudo systemctl restart qbittorrent (if needed)  
+Options -> Connection -> Use UPnP / NAT-PMP port forwarding from my router - DISABLE  
+Options -> WebUI -> Web User Interface (Remote control) -> IP Address - 192.168.88.10  
+Options -> WebUI -> Authentication -> Bypass authentication for clients on localhost - DISABLE  
 
 REBOOT hang fix:  
 sudo nano /etc/default/grub  
