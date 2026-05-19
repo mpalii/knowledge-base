@@ -86,6 +86,15 @@ Options -> Connection -> Use UPnP / NAT-PMP port forwarding from my router - DIS
 Options -> WebUI -> Web User Interface (Remote control) -> IP Address - 192.168.88.10  
 Options -> WebUI -> Authentication -> Bypass authentication for clients on localhost - DISABLE  
 
+MEDIA server  
+sudo apt install curl gpg apt-transport-https  
+curl -fsSL https://repo.jellyfin.org/jellyfin_team.gpg.key | sudo gpg --dearmor -o /usr/share/keyrings/jellyfin.gpg  
+echo "deb [signed-by=/usr/share/keyrings/jellyfin.gpg] https://repo.jellyfin.org/debian trixie main" | sudo tee /etc/apt/sources.list.d/jellyfin.list  
+sudo apt update  
+sudo apt install jellyfin  
+sudo systemctl status jellyfin  
+sudo ufw allow from 192.168.88.0/24 to any port 8096 proto tcp comment 'Jellyfin LAN'  
+
 REBOOT hang fix:  
 sudo nano /etc/default/grub  
 GRUB_CMDLINE_LINUX_DEFAULT="quiet pcie_aspm=off e1000e.SmartPowerDownEnable=0 reboot=efi,reboot=p,reboot=acpi"  
