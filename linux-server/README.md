@@ -44,7 +44,7 @@ FIREWALL
 (sudo) ufw default allow outgoing  
 (sudo) ufw allow ssh  
 (sudo) ufw enable  
-(sudo) ufw allow from 192.168.88.0/24 to any port 22 proto tcp comment 'SSH (only from home LAN)'  
+(sudo) ufw allow from 192.168.88.0/24 to any port 22 proto tcp comment 'OpenSSH (only from home LAN)'  
 (sudo) ufw delete RULE_NUMBER  
 
 NTP service  
@@ -79,9 +79,10 @@ WantedBy=multi-user.target
 ```
 sudo systemctl daemon-reload  
 sudo systemctl enable --now qbittorrent  
-sudo systemctl status qbittorrent
+sudo systemctl status qbittorrent  
 sudo systemctl daemon-reload (if needed)  
 sudo systemctl restart qbittorrent (if needed)  
+sudo ufw allow from 192.168.88.0/24 to any port 8094 proto tcp comment 'qBittorrent (only from home LAN)'  
 Options -> Connection -> Use UPnP / NAT-PMP port forwarding from my router - DISABLE  
 Options -> WebUI -> Web User Interface (Remote control) -> IP Address - 192.168.88.10  
 Options -> WebUI -> Authentication -> Bypass authentication for clients on localhost - DISABLE  
