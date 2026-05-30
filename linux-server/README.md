@@ -96,6 +96,164 @@ sudo apt install jellyfin
 sudo systemctl status jellyfin  
 sudo ufw allow from 192.168.88.0/24 to any port 8096 proto tcp comment 'Jellyfin LAN'  
 
+REVERSE PROXY   
+sudo apt install caddy  
+sudo systemctl enable --now caddy  
+sudo systemctl status caddy  
+Make DNS record for routing to your server  
+sudo nano /etc/caddy/Caddyfile  
+```
+{
+    auto_https off
+}
+
+:80 {
+#    root * /usr/share/caddy
+    root * /var/www/home
+    file_server
+
+    # redirects for clean URLs
+    redir /torrent /torrent/ 308
+    redir /media /media/ 308
+
+    handle_path /torrent/* {
+        reverse_proxy 192.168.88.10:8094
+    }
+
+    handle_path /media/* {
+        reverse_proxy 127.0.0.1:8096
+    }
+}
+```
+sudo caddy validate --config /etc/caddy/Caddyfile  
+sudo systemctl restart caddy  
+sudo ss -tulpn | grep :80  
+sudo ufw allow 80/tcp comment 'Caddy HTTP'  
+sudo ufw status verbose  
+
+HTTP SERVER home page    
+sudo mkdir -p /var/www/home  
+sudo nano /var/www/home/index.html  
+```
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Home Server</title>
+
+<style>
+:root {
+    --bg: #111827;
+    --panel: #1f2937;
+    --panel-hover: #374151;
+    --text: #f3f4f6;
+    --muted: #9ca3af;
+    --border: #4b5563;
+    --accent: #2563eb;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: system-ui, sans-serif;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 48px 24px;
+}
+
+h1 {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 32px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+}
+
+.card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    transition: 0.15s ease;
+}
+
+.card:hover {
+    background: var(--panel-hover);
+    border-color: var(--accent);
+}
+
+.card-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.card-desc {
+    color: var(--muted);
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+.footer {
+    margin-top: 48px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<h1>Home Server</h1>
+
+<div class="grid">
+
+<a class="card" href="/torrent/">
+    <div class="card-title">qBittorrent</div>
+    <div class="card-desc">
+        Torrent client and download management.
+    </div>
+</a>
+
+<a class="card" href="/media/">
+    <div class="card-title">Jellyfin</div>
+    <div class="card-desc">
+        Media library and streaming server.
+    </div>
+</a>
+
+</div>
+
+<div class="footer">
+    Debian · ThinkCentre M720q
+</div>
+
+</div>
+</body>
+</html>
+```
+
 REBOOT hang fix:  
 sudo nano /etc/default/grub  
 GRUB_CMDLINE_LINUX_DEFAULT="quiet pcie_aspm=off e1000e.SmartPowerDownEnable=0 reboot=efi,reboot=p,reboot=acpi"  
