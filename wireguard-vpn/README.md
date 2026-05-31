@@ -34,9 +34,9 @@ PublicKey = PEER_2_PUBLIC_KEY
 AllowedIPs = 10.13.13.3/32
 
 [Peer]
-# Peer N description
-PublicKey = PEER_N_PUBLIC_KEY 
-AllowedIPs = 10.13.13.N/32
+# Peer 3 description
+PublicKey = PEER_3_PUBLIC_KEY 
+AllowedIPs = 10.13.13.4/32
 ```
 - register and start WireGuard service.  
 
@@ -51,15 +51,15 @@ But for the simplicity of management we can ignore this rule.
 - add the snippet below to the `/etc/wireguard/peerXX/wg0.conf` peer XX configuration file:  
 ```
 [Interface]  
-Address = 10.13.13.XX/24  
-PrivateKey = PEER_XX_PRIVATE_KEY
+Address = 10.13.13.5/32  
+PrivateKey = PEER_4_PRIVATE_KEY
 # DNS address is optional
 #DNS = 8.8.8.8  
 
 [Peer]
 PublicKey = SERVER_PUBLIC_KEY  
 Endpoint = VPN_SERVER_IP:51820  
-AllowedIPs = 10.13.13.0/24  
+AllowedIPs = 10.13.13.1/32  
 PersistentKeepalive = 25
 ```
 Adjust HUB configuration file `/etc/wireguard/wg0.conf` with the newly created peer XX information:  
@@ -69,8 +69,8 @@ Adjust HUB configuration file `/etc/wireguard/wg0.conf` with the newly created p
 
 [Peer]  
 # Some new peer description  
-PublicKey = PEER_XX_PUBLIC_KEY  
-AllowedIPs = 10.13.13.XX/32  
+PublicKey = PEER_4_PUBLIC_KEY  
+AllowedIPs = 10.13.13.5/32  
 ```
 
 ### 3. HUB - enable packet forwarding  
