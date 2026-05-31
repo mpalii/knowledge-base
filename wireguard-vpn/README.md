@@ -53,7 +53,6 @@ But for the simplicity of management we can ignore this rule.
 [Interface]  
 Address = 10.13.13.XX/24  
 PrivateKey = PEER_XX_PRIVATE_KEY
-ListenPort = 51820
 # DNS address is optional
 #DNS = 8.8.8.8  
 
@@ -63,7 +62,7 @@ Endpoint = VPN_SERVER_IP:51820
 AllowedIPs = 10.13.13.0/24  
 PersistentKeepalive = 25
 ```
-Adjust server configuration file `/etc/wireguard/wg0.conf` with the newly created peer XX information:  
+Adjust HUB configuration file `/etc/wireguard/wg0.conf` with the newly created peer XX information:  
 ```
 [Interface]  
 ...
@@ -74,7 +73,7 @@ PublicKey = PEER_XX_PUBLIC_KEY
 AllowedIPs = 10.13.13.XX/32  
 ```
 
-### 3. Enable packet forwarding  
+### 3. HUB - enable packet forwarding  
 Uncomment the line (remove dash):  
 `#net.ipv4.ip_forward=1`  
 in the `/etc/sysctl.conf`  
