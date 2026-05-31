@@ -1,14 +1,20 @@
 ## WireGuard VPN  
+- Classic Hub-and-Spoke “overlay network”;  
+- No NAT (Network Address Translation), without access to the internet through the HUB;
+- HUB is only L3-router inside VPN.
 
-Classic Hub-and-Spoke “overlay network” (no NAT, no access to the internet through the HUB).  
+Peer1 ----\
+Peer2 ----- HUB (10.13.13.1)
+Peer3 ----/
 
-### 0. Preconditions  
+### Preconditions  
 - connect to the appropriate linux machine (VPS for HUB);  
 - perform initial configuration if needed;  
 - `sudo apt install wireguard` install WireGuard with;  
-- `touch /etc/wireguard/wg0.conf` create server configuration file;
 - `cd /etc/wireguard`;  
 - `wg genkey | tee privatekey | wg pubkey > publickey` generate private and public keys;  
+- `nano /etc/wireguard/wg0.conf` create and update WireGuard configuration file;  
+- remove public and private keys after all configuration actions.  
 
 ### 1. HUB configuration  
 - `ip route list default` check the public network interface (can be `eth0`);  
@@ -17,13 +23,15 @@ Classic Hub-and-Spoke “overlay network” (no NAT, no access to the internet t
 [Interface]
 Address = 10.13.13.1/24  
 ListenPort = 51820  
-PrivateKey = SERVER_PRIVATE_KEY  
-PostUp = iptables -A FORWARD -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
-PostUp = iptables -A FORWARD -i wg0 -j ACCEPT
-PostUp = iptables -A FORWARD -o wg0 -j ACCEPT
-PostDown = iptables -D FORWARD -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
-PostDown = iptables -D FORWARD -i wg0 -j ACCEPT
-PostDown = iptables -D FORWARD -o wg0 -j ACCEPT 
+PrivateKey = SERVER_PRIVATE_KEY
+
+PostUp = iptables -A INPUT -p udp --dport 51820 -j ACCEPT
+PostUp = iptables -A FORWARD -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
+PostUp = iptables -A FORWARD -i wg0 -o wg0 -j ACCEPT
+
+PostDown = iptables -D INPUT -p udp --dport 51820 -j ACCEPT
+PostDown = iptables -D FORWARD -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
+PostDown = iptables -D FORWARD -i wg0 -o wg0 -j ACCEPT
 
 [Peer]  
 # Peer 1 description
@@ -46,7 +54,7 @@ AllowedIPs = 10.13.13.4/32
 - add the snippet below to the `/etc/wireguard/wg0.conf` peer configuration file:  
 ```
 [Interface]  
-Address = 10.13.13.5/24  
+Address = 10.13.13.5/32  
 PrivateKey = PEER_4_PRIVATE_KEY
 # DNS address is optional
 #DNS = 8.8.8.8  
@@ -54,7 +62,7 @@ PrivateKey = PEER_4_PRIVATE_KEY
 [Peer]
 PublicKey = SERVER_PUBLIC_KEY  
 Endpoint = VPN_SERVER_IP:51820  
-AllowedIPs = 10.13.13.1/24  
+AllowedIPs = 10.13.13.0/24  
 PersistentKeepalive = 25
 ```
 Adjust HUB configuration file `/etc/wireguard/wg0.conf` with the newly created peer XX information:  
@@ -69,12 +77,12 @@ AllowedIPs = 10.13.13.5/32
 ```
 
 ### 3. HUB - enable packet forwarding  
-Uncomment the line (remove dash):  
+In the `/etc/sysctl.conf` uncomment the line (remove dash):  
 `#net.ipv4.ip_forward=1`  
-in the `/etc/sysctl.conf`  
+or explicitly add `net.ipv4.ip_forward=1`  
 
-And set the parameter:  
-`echo 1 > /proc/sys/net/ipv4/ip_forward`  
+Apply changes:  
+`sudo sysctl -p`  
 
 ### 4. WireGuard service manipulation  
 Register service (enable service):  
@@ -92,12 +100,15 @@ Check service:
 Stop service:  
 `sudo systemctl stop wg-quick@wg0.service`  
 
+Quick start:  
+`sudo wg-quick up wg0`  
+
+Quick stop:  
+`sudo wg-quick down wg0`  
+
 ### 5. Configuration pulling  
 `sudo apt install qrencode`  utility to generate QR code  
-`qrencode -t ansiutf8 < /etc/wireguard/peerXX/wg0.conf` to generate QR code with configuration for peer XX  
-
-`sudo wg-quick up wg0`  
-`sudo wg-quick down wg0`  
+`qrencode -t ansiutf8 < /etc/wireguard/wg0.conf` to generate QR code with configuration for non HUB  
 
 NOTE:  
 https://www.digitalocean.com/community/tutorials/how-to-set-up-wireguard-on-ubuntu-22-04  
