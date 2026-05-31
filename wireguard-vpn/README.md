@@ -1,18 +1,18 @@
 ## WireGuard VPN  
 
-Classic Hub-and-Spoke “overlay network” (no NAT, no access to the internet through the HUB).
+Classic Hub-and-Spoke “overlay network” (no NAT, no access to the internet through the HUB).  
 
-### 1. HUB configuration  
-- select appropriate VPS (with correct CPU resources and billing plan);  
+### 0. Preconditions  
+- connect to the appropriate linux machine (VPS for HUB);  
 - perform initial configuration if needed;  
 - `sudo apt install wireguard` install WireGuard with;  
-- `umask 077` change the permission mask;  
-- `mkdir /etc/wireguard/server` create folder for server keys;  
-- `cd /etc/wireguard/server` change directory;  
-- `wg genkey | tee privatekey-server | wg pubkey > publickey-server` generate private and public keys;  
-- `touch /etc/wireguard/wg0.conf` create server configuration file;  
+- `touch /etc/wireguard/wg0.conf` create server configuration file;
+- `cd /etc/wireguard`;  
+- `wg genkey | tee privatekey | wg pubkey > publickey` generate private and public keys;  
+
+### 1. HUB configuration  
 - `ip route list default` check the public network interface (can be `eth0`);  
-- add the snippet below to the `wg0.conf` server configuration file:  
+- add the snippet below to the `wg0.conf` configuration file:  
 ```
 [Interface]
 Address = 10.13.13.1/24  
@@ -43,14 +43,7 @@ AllowedIPs = 10.13.13.4/32
 - register and start WireGuard service.  
 
 ### 2. Peer configuration (adding new peer)  
-It is very bad idea to keep peer's private keys on the server side due to security reasons.  
-But for the simplicity of management we can ignore this rule.  
-
-- `mkdir /etc/wireguard/peerXX` create folder for peer XX keys;  
-- `cd /etc/wireguard/peerXX` change directory;  
-- `wg genkey | tee privatekey-peerXX | wg pubkey > publickey-peerXX` generate private and public keys;  
-- `touch /etc/wireguard/peerXX/wg0.conf` create peer XX configuration file;  
-- add the snippet below to the `/etc/wireguard/peerXX/wg0.conf` peer XX configuration file:  
+- add the snippet below to the `/etc/wireguard/wg0.conf` peer configuration file:  
 ```
 [Interface]  
 Address = 10.13.13.5/24  
@@ -99,7 +92,7 @@ Check service:
 Stop service:  
 `sudo systemctl stop wg-quick@wg0.service`  
 
-### 4. Configuration pulling  
+### 5. Configuration pulling  
 `sudo apt install qrencode`  utility to generate QR code  
 `qrencode -t ansiutf8 < /etc/wireguard/peerXX/wg0.conf` to generate QR code with configuration for peer XX  
 
