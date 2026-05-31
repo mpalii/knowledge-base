@@ -1,6 +1,6 @@
-## WireGuard VPN  
+## WireGuard VPN (Hub-and-Spoke)  
 
-### 1. Server configuration  
+### 1. HUB configuration  
 - select appropriate VPS (with correct CPU resources and billing plan);  
 - perform initial configuration if needed;  
 - `sudo apt install wireguard` install WireGuard with;  
@@ -13,15 +13,30 @@
 - add the snippet below to the `wg0.conf` server configuration file:  
 ```
 [Interface]
-Address = 10.13.13.1  
+Address = 10.13.13.1/24  
 ListenPort = 51820  
 PrivateKey = SERVER_PRIVATE_KEY  
-PostUp = iptables -A FORWARD -i eth0 -j ACCEPT  
-PostUp = iptables -A FORWARD -o eth0 -j ACCEPT  
-PostUp = iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE  
-PostDown = iptables -D FORWARD -i eth0 -j ACCEPT  
-PostDown = iptables -D FORWARD -o eth0 -j ACCEPT  
-PostDown = iptables -t nat -D POSTROUTING -o eth+ -j MASQUERADE  
+PostUp = iptables -A FORWARD -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
+PostUp = iptables -A FORWARD -i wg0 -j ACCEPT
+PostUp = iptables -A FORWARD -o wg0 -j ACCEPT
+PostDown = iptables -D FORWARD -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
+PostDown = iptables -D FORWARD -i wg0 -j ACCEPT
+PostDown = iptables -D FORWARD -o wg0 -j ACCEPT 
+
+[Peer]  
+# Peer 1 description
+PublicKey = PEER_1_PUBLIC_KEY 
+AllowedIPs = 10.13.13.2/32  
+
+[Peer]
+# Peer 2 description
+PublicKey = PEER_2_PUBLIC_KEY 
+AllowedIPs = 10.13.13.3/32
+
+[Peer]
+# Peer N description
+PublicKey = PEER_N_PUBLIC_KEY 
+AllowedIPs = 10.13.13.N/32
 ```
 - register and start WireGuard service.  
 
@@ -36,33 +51,27 @@ But for the simplicity of management we can ignore this rule.
 - add the snippet below to the `/etc/wireguard/peerXX/wg0.conf` peer XX configuration file:  
 ```
 [Interface]  
-Address = 10.13.13.2  
-PrivateKey = PEER_XX_PRIVATE_KEY  
-ListenPort = 51820  
-DNS = 8.8.8.8  
+Address = 10.13.13.XX/24  
+PrivateKey = PEER_XX_PRIVATE_KEY
+ListenPort = 51820
+# DNS address is optional
+#DNS = 8.8.8.8  
 
 [Peer]
 PublicKey = SERVER_PUBLIC_KEY  
 Endpoint = VPN_SERVER_IP:51820  
-AllowedIPs = 0.0.0.0/0  
+AllowedIPs = 10.13.13.0/24  
+PersistentKeepalive = 25
 ```
 Adjust server configuration file `/etc/wireguard/wg0.conf` with the newly created peer XX information:  
 ```
 [Interface]  
-Address = 10.13.13.1  
-ListenPort = 51820  
-PrivateKey = SERVER_PRIVATE_KEY  
-PostUp = iptables -A FORWARD -i eth0 -j ACCEPT  
-PostUp = iptables -A FORWARD -o eth0 -j ACCEPT  
-PostUp = iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE  
-PostDown = iptables -D FORWARD -i eth0 -j ACCEPT  
-PostDown = iptables -D FORWARD -o eth0 -j ACCEPT  
-PostDown = iptables -t nat -D POSTROUTING -o eth+ -j MASQUERADE  
+...
 
 [Peer]  
 # Some new peer description  
 PublicKey = PEER_XX_PUBLIC_KEY  
-AllowedIPs = 10.13.13.2/32  
+AllowedIPs = 10.13.13.XX/32  
 ```
 
 ### 3. Enable packet forwarding  
