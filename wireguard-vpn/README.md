@@ -3,9 +3,9 @@
 - No NAT (Network Address Translation), without access to the internet through the HUB;
 - HUB is only L3-router inside VPN.
 
-Peer1 ----\
-Peer2 ----- HUB (10.13.13.1)
-Peer3 ----/
+Peer1 ----\  
+Peer2 ----- HUB (10.13.13.1)  
+Peer3 ----/  
 
 ### Preconditions  
 - connect to the appropriate linux machine (VPS for HUB);  
