@@ -1,4 +1,6 @@
-## WireGuard VPN (Hub-and-Spoke)
+## WireGuard VPN  
+
+Classic Hub-and-Spoke “overlay network” (no NAT, no access to the internet through the HUB).
 
 ### 1. HUB configuration  
 - select appropriate VPS (with correct CPU resources and billing plan);  
