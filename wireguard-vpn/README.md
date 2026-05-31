@@ -7,6 +7,8 @@ Peer1 ----\
 Peer2 ----- HUB (10.13.13.1)  
 Peer3 ----/  
 
+<br>  
+
 ### Preconditions  
 - connect to the appropriate linux machine (VPS for HUB);  
 - perform initial configuration if needed;  
