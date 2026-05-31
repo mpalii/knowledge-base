@@ -1,4 +1,4 @@
-## WireGuard VPN (Hub-and-Spoke)  
+## WireGuard VPN (Hub-and-Spoke)
 
 ### 1. HUB configuration  
 - select appropriate VPS (with correct CPU resources and billing plan);  
@@ -51,7 +51,7 @@ But for the simplicity of management we can ignore this rule.
 - add the snippet below to the `/etc/wireguard/peerXX/wg0.conf` peer XX configuration file:  
 ```
 [Interface]  
-Address = 10.13.13.5/32  
+Address = 10.13.13.5/24  
 PrivateKey = PEER_4_PRIVATE_KEY
 # DNS address is optional
 #DNS = 8.8.8.8  
@@ -59,7 +59,7 @@ PrivateKey = PEER_4_PRIVATE_KEY
 [Peer]
 PublicKey = SERVER_PUBLIC_KEY  
 Endpoint = VPN_SERVER_IP:51820  
-AllowedIPs = 10.13.13.1/32  
+AllowedIPs = 10.13.13.1/24  
 PersistentKeepalive = 25
 ```
 Adjust HUB configuration file `/etc/wireguard/wg0.conf` with the newly created peer XX information:  
