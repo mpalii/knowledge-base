@@ -1,53 +1,30 @@
-## WireGuard VPN (Hub-and-Spoke, UFW-based)
+### WireGuard VPN (Hub-and-Spoke, UFW-based)  
 
-* Classic Hub-and-Spoke overlay network;
-* No NAT (Network Address Translation);
-* No Internet access through the HUB;
-* HUB acts only as an L3 router inside the VPN.
+- Classic Hub-and-Spoke overlay network;  
+- No NAT (Network Address Translation);  
+- No Internet access through the HUB;  
+- HUB acts only as an L3 router inside the VPN.  
 
-```text id="n7p0qv"
+```
 Peer1 ----\
 Peer2 ----- HUB (10.13.13.1)
 Peer3 ----/
 ```
 
-## Preconditions (HUB / VPS)
+### Preconditions (HUB / VPS)
 
-* connect to the Linux VPS (HUB);
-* install WireGuard:
+- connect to the Linux VPS (HUB);
+- `sudo apt update` update packages;  
+- `sudo apt install wireguard ufw` install WireGuard;  
+- `cd /etc/wireguard` go to config directory;
+- `umask 077` default permissions only for owners;  
+- `wg genkey | tee privatekey | wg pubkey > publickey` generate keys;  
+- `sudo nano /etc/wireguard/wg0.conf` create config;  
+- `rm privatekey publickey` remove temporary key files after copying keys into config.  
 
-```bash
-sudo apt update
-sudo apt install wireguard ufw
-```
+### 1. HUB Configuration
 
-* go to config directory:
-
-```bash
-cd /etc/wireguard
-```
-
-* generate keys:
-
-```bash
-wg genkey | tee privatekey | wg pubkey > publickey
-```
-
-* create config:
-
-```bash
-sudo nano /etc/wireguard/wg0.conf
-```
-
-* remove temporary key files after copying keys into config:
-
-```bash
-rm privatekey publickey
-```
-
-## 1. HUB Configuration
-
-Create `/etc/wireguard/wg0.conf`:
+Create `/etc/wireguard/wg0.conf`:  
 
 ```ini
 [Interface]
@@ -57,77 +34,36 @@ PrivateKey = SERVER_PRIVATE_KEY
 SaveConfig = false
 
 [Peer]
-# Peer 1
+# Peer 1 description
 PublicKey = PEER_1_PUBLIC_KEY
 AllowedIPs = 10.13.13.2/32
 
 [Peer]
-# Peer 2
+# Peer 2 description
 PublicKey = PEER_2_PUBLIC_KEY
 AllowedIPs = 10.13.13.3/32
 
 [Peer]
-# Peer 3
+# Peer 3 description
 PublicKey = PEER_3_PUBLIC_KEY
 AllowedIPs = 10.13.13.4/32
 ```
 
-## 2. UFW Configuration (HUB)
+### 2. Enable Packet Forwarding (HUB)
 
-Enable UFW and allow WireGuard:
+`sudo nano /etc/sysctl.conf` enable forwarding with `net.ipv4.ip_forward=1`
+`sudo sysctl -p` apply changes  
+`sudo sysctl net.ipv4.ip_forward` verify  
 
-```bash
-sudo ufw allow 51820/udp
-sudo ufw enable
-```
+### 3. UFW Configuration (HUB)
 
-Enable routing in UFW:
+`sudo ufw route allow in on wg0 out on wg0` allow routing within wg0 only  
+`sudo ufw allow 51820/udp` UFW rules for WireGuard  
+`sudo ufw enable` if UFW is not enabled  
+`sudo ufw reload` if UFW is already enabled  
+`sudo ufw status verbose` check UFW  
 
-Edit:
-
-```bash
-sudo nano /etc/default/ufw
-```
-
-Set:
-
-```ini
-DEFAULT_FORWARD_POLICY="ACCEPT"
-```
-
-Apply:
-
-```bash
-sudo ufw reload
-```
-
-## 3. Enable Packet Forwarding (HUB)
-
-Edit `/etc/sysctl.conf`:
-
-```ini
-net.ipv4.ip_forward=1
-```
-
-Apply:
-
-```bash
-sudo sysctl -p
-```
-
-Verify:
-
-```bash
-sysctl net.ipv4.ip_forward
-```
-
-Expected:
-
-```text
-net.ipv4.ip_forward = 1
-```
-
-## 4. Peer Configuration (Client)
+### 4. Peer Configuration (Client)
 
 On each peer:
 
@@ -146,7 +82,7 @@ AllowedIPs = 10.13.13.0/24
 PersistentKeepalive = 25
 ```
 
-Add peer to HUB `/etc/wireguard/wg0.conf`:
+`sudo nano /etc/wireguard/wg0.conf` add peer to HUB (on HUB)  
 
 ```ini
 [Peer]
@@ -155,85 +91,24 @@ PublicKey = PEER_4_PUBLIC_KEY
 AllowedIPs = 10.13.13.5/32
 ```
 
-Apply changes:
+`sudo systemctl restart wg-quick@wg0` apply changes  
 
-```bash
-sudo systemctl restart wg-quick@wg0
-```
+### 5. WireGuard Service Management  
 
-## 5. WireGuard Service Management
+`sudo systemctl enable wg-quick@wg0` enable autostart  
+`sudo systemctl start wg-quick@wg0` start  
+`sudo systemctl stop wg-quick@wg0` stop  
+`sudo systemctl status wg-quick@wg0` status  
+`sudo wg show` info  
+`sudo ss -ulpn | grep 51820` check listening port  
 
-Enable autostart:
+### 6. Connectivity & Utilities
 
-```bash
-sudo systemctl enable wg-quick@wg0
-```
+`ping 10.13.13.1` connectivity test (from any peer to HUB)  
+`ping 10.13.13.3` connectivity test (peer-to-peer)  
+`sudo apt install qrencode` QR code generator  
+`qrencode -t ansiutf8 < peer.conf` generate QR from peer configuration file  
 
-Start:
-
-```bash
-sudo systemctl start wg-quick@wg0
-```
-
-Status:
-
-```bash
-sudo systemctl status wg-quick@wg0
-```
-
-WireGuard info:
-
-```bash
-sudo wg show
-```
-
-Listening check:
-
-```bash
-sudo ss -ulpn | grep 51820
-```
-
-Stop:
-
-```bash
-sudo systemctl stop wg-quick@wg0
-```
-
-## 6. Connectivity Test
-
-From any peer:
-
-```bash
-ping 10.13.13.1
-```
-
-Test peer-to-peer:
-
-```bash
-ping 10.13.13.3
-```
-
-Expected:
-
-```text
-Peer ↔ HUB
-Peer ↔ Peer
-```
-
-## 7. Optional: QR Configuration Export
-
-Install:
-
-```bash
-sudo apt install qrencode
-```
-
-Generate QR:
-
-```bash
-qrencode -t ansiutf8 < /etc/wireguard/wg0.conf
-```
-
-## Reference
+### Reference
 
 https://www.digitalocean.com/community/tutorials/how-to-set-up-wireguard-on-ubuntu-22-04
