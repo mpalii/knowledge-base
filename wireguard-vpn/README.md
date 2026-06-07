@@ -11,8 +11,6 @@ Peer2 ----- HUB (10.13.13.1)
 Peer3 ----/
 ```
 
----
-
 ## Preconditions (HUB / VPS)
 
 * connect to the Linux VPS (HUB);
@@ -47,8 +45,6 @@ sudo nano /etc/wireguard/wg0.conf
 rm privatekey publickey
 ```
 
----
-
 ## 1. HUB Configuration
 
 Create `/etc/wireguard/wg0.conf`:
@@ -75,8 +71,6 @@ AllowedIPs = 10.13.13.3/32
 PublicKey = PEER_3_PUBLIC_KEY
 AllowedIPs = 10.13.13.4/32
 ```
-
----
 
 ## 2. UFW Configuration (HUB)
 
@@ -107,8 +101,6 @@ Apply:
 sudo ufw reload
 ```
 
----
-
 ## 3. Enable Packet Forwarding (HUB)
 
 Edit `/etc/sysctl.conf`:
@@ -134,8 +126,6 @@ Expected:
 ```text
 net.ipv4.ip_forward = 1
 ```
-
----
 
 ## 4. Peer Configuration (Client)
 
@@ -170,8 +160,6 @@ Apply changes:
 ```bash
 sudo systemctl restart wg-quick@wg0
 ```
-
----
 
 ## 5. WireGuard Service Management
 
@@ -211,8 +199,6 @@ Stop:
 sudo systemctl stop wg-quick@wg0
 ```
 
----
-
 ## 6. Connectivity Test
 
 From any peer:
@@ -234,8 +220,6 @@ Peer ↔ HUB
 Peer ↔ Peer
 ```
 
----
-
 ## 7. Optional: QR Configuration Export
 
 Install:
@@ -249,8 +233,6 @@ Generate QR:
 ```bash
 qrencode -t ansiutf8 < /etc/wireguard/wg0.conf
 ```
-
----
 
 ## Reference
 
