@@ -51,7 +51,7 @@ AllowedIPs = 10.13.13.4/32
 
 ### 2. Enable Packet Forwarding (HUB)
 
-`sudo nano /etc/sysctl.conf` enable forwarding with `net.ipv4.ip_forward=1`
+`sudo nano /etc/sysctl.conf` enable forwarding with **net.ipv4.ip_forward=1**  
 `sudo sysctl -p` apply changes  
 `sudo sysctl net.ipv4.ip_forward` verify  
 
