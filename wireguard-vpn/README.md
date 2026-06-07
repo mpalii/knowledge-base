@@ -1,114 +1,257 @@
-## WireGuard VPN  
-- Classic Hub-and-Spoke “overlay network”;  
-- No NAT (Network Address Translation), without access to the internet through the HUB;
-- HUB is only L3-router inside VPN.
+## WireGuard VPN (Hub-and-Spoke, UFW-based)
 
-Peer1 ----\  
-Peer2 ----- HUB (10.13.13.1)  
-Peer3 ----/  
+* Classic Hub-and-Spoke overlay network;
+* No NAT (Network Address Translation);
+* No Internet access through the HUB;
+* HUB acts only as an L3 router inside the VPN.
 
-### Preconditions  
-- connect to the appropriate linux machine (VPS for HUB);  
-- perform initial configuration if needed;  
-- `sudo apt install wireguard` install WireGuard with;  
-- `cd /etc/wireguard`;  
-- `wg genkey | tee privatekey | wg pubkey > publickey` generate private and public keys;  
-- `nano /etc/wireguard/wg0.conf` create and update WireGuard configuration file;  
-- remove public and private keys after all configuration actions.  
-
-### 1. HUB configuration  
-- `ip route list default` check the public network interface (can be `eth0`);  
-- add the snippet below to the `wg0.conf` configuration file:  
+```text id="n7p0qv"
+Peer1 ----\
+Peer2 ----- HUB (10.13.13.1)
+Peer3 ----/
 ```
+
+---
+
+## Preconditions (HUB / VPS)
+
+* connect to the Linux VPS (HUB);
+* install WireGuard:
+
+```bash
+sudo apt update
+sudo apt install wireguard ufw
+```
+
+* go to config directory:
+
+```bash
+cd /etc/wireguard
+```
+
+* generate keys:
+
+```bash
+wg genkey | tee privatekey | wg pubkey > publickey
+```
+
+* create config:
+
+```bash
+sudo nano /etc/wireguard/wg0.conf
+```
+
+* remove temporary key files after copying keys into config:
+
+```bash
+rm privatekey publickey
+```
+
+---
+
+## 1. HUB Configuration
+
+Create `/etc/wireguard/wg0.conf`:
+
+```ini
 [Interface]
-Address = 10.13.13.1/24  
-ListenPort = 51820  
+Address = 10.13.13.1/24
+ListenPort = 51820
 PrivateKey = SERVER_PRIVATE_KEY
-
-PostUp = iptables -A INPUT -p udp --dport 51820 -j ACCEPT
-PostUp = iptables -A FORWARD -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
-PostUp = iptables -A FORWARD -i wg0 -o wg0 -j ACCEPT
-
-PostDown = iptables -D INPUT -p udp --dport 51820 -j ACCEPT
-PostDown = iptables -D FORWARD -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
-PostDown = iptables -D FORWARD -i wg0 -o wg0 -j ACCEPT
-
-[Peer]  
-# Peer 1 description
-PublicKey = PEER_1_PUBLIC_KEY 
-AllowedIPs = 10.13.13.2/32  
+SaveConfig = false
 
 [Peer]
-# Peer 2 description
-PublicKey = PEER_2_PUBLIC_KEY 
+# Peer 1
+PublicKey = PEER_1_PUBLIC_KEY
+AllowedIPs = 10.13.13.2/32
+
+[Peer]
+# Peer 2
+PublicKey = PEER_2_PUBLIC_KEY
 AllowedIPs = 10.13.13.3/32
 
 [Peer]
-# Peer 3 description
-PublicKey = PEER_3_PUBLIC_KEY 
+# Peer 3
+PublicKey = PEER_3_PUBLIC_KEY
 AllowedIPs = 10.13.13.4/32
 ```
-- register and start WireGuard service.  
 
-### 2. Peer configuration (adding new peer)  
-- add the snippet below to the `/etc/wireguard/wg0.conf` peer configuration file:  
+---
+
+## 2. UFW Configuration (HUB)
+
+Enable UFW and allow WireGuard:
+
+```bash
+sudo ufw allow 51820/udp
+sudo ufw enable
 ```
-[Interface]  
-Address = 10.13.13.5/32  
+
+Enable routing in UFW:
+
+Edit:
+
+```bash
+sudo nano /etc/default/ufw
+```
+
+Set:
+
+```ini
+DEFAULT_FORWARD_POLICY="ACCEPT"
+```
+
+Apply:
+
+```bash
+sudo ufw reload
+```
+
+---
+
+## 3. Enable Packet Forwarding (HUB)
+
+Edit `/etc/sysctl.conf`:
+
+```ini
+net.ipv4.ip_forward=1
+```
+
+Apply:
+
+```bash
+sudo sysctl -p
+```
+
+Verify:
+
+```bash
+sysctl net.ipv4.ip_forward
+```
+
+Expected:
+
+```text
+net.ipv4.ip_forward = 1
+```
+
+---
+
+## 4. Peer Configuration (Client)
+
+On each peer:
+
+```ini
+[Interface]
+Address = 10.13.13.5/32
 PrivateKey = PEER_4_PRIVATE_KEY
-# DNS address is optional
-#DNS = 8.8.8.8  
+
+# Optional DNS (if needed)
+# DNS = 10.13.13.1
 
 [Peer]
-PublicKey = SERVER_PUBLIC_KEY  
-Endpoint = VPN_SERVER_IP:51820  
-AllowedIPs = 10.13.13.0/24  
+PublicKey = SERVER_PUBLIC_KEY
+Endpoint = VPN_SERVER_IP:51820
+AllowedIPs = 10.13.13.0/24
 PersistentKeepalive = 25
 ```
-Adjust HUB configuration file `/etc/wireguard/wg0.conf` with the newly created peer XX information:  
+
+Add peer to HUB `/etc/wireguard/wg0.conf`:
+
+```ini
+[Peer]
+# Peer 4
+PublicKey = PEER_4_PUBLIC_KEY
+AllowedIPs = 10.13.13.5/32
 ```
-[Interface]  
-...
 
-[Peer]  
-# Some new peer description  
-PublicKey = PEER_4_PUBLIC_KEY  
-AllowedIPs = 10.13.13.5/32  
+Apply changes:
+
+```bash
+sudo systemctl restart wg-quick@wg0
 ```
 
-### 3. HUB - enable packet forwarding  
-In the `/etc/sysctl.conf` uncomment the line (remove dash):  
-`#net.ipv4.ip_forward=1`  
-or explicitly add `net.ipv4.ip_forward=1`  
+---
 
-Apply changes:  
-`sudo sysctl -p`  
+## 5. WireGuard Service Management
 
-### 4. WireGuard service manipulation  
-Register service (enable service):  
-`systemctl enable wg-quick@wg0`  
+Enable autostart:
 
-Start service:  
-`systemctl start wg-quick@wg0.service`  
+```bash
+sudo systemctl enable wg-quick@wg0
+```
 
-Show info:  
-`wg show`  
+Start:
 
-Check service:  
-`sudo systemctl status wg-quick@wg0.service`  
+```bash
+sudo systemctl start wg-quick@wg0
+```
 
-Stop service:  
-`sudo systemctl stop wg-quick@wg0.service`  
+Status:
 
-Quick start:  
-`sudo wg-quick up wg0`  
+```bash
+sudo systemctl status wg-quick@wg0
+```
 
-Quick stop:  
-`sudo wg-quick down wg0`  
+WireGuard info:
 
-### 5. Configuration pulling  
-`sudo apt install qrencode`  utility to generate QR code  
-`qrencode -t ansiutf8 < /etc/wireguard/wg0.conf` to generate QR code with configuration for non HUB  
+```bash
+sudo wg show
+```
 
-NOTE:  
-https://www.digitalocean.com/community/tutorials/how-to-set-up-wireguard-on-ubuntu-22-04  
+Listening check:
+
+```bash
+sudo ss -ulpn | grep 51820
+```
+
+Stop:
+
+```bash
+sudo systemctl stop wg-quick@wg0
+```
+
+---
+
+## 6. Connectivity Test
+
+From any peer:
+
+```bash
+ping 10.13.13.1
+```
+
+Test peer-to-peer:
+
+```bash
+ping 10.13.13.3
+```
+
+Expected:
+
+```text
+Peer ↔ HUB
+Peer ↔ Peer
+```
+
+---
+
+## 7. Optional: QR Configuration Export
+
+Install:
+
+```bash
+sudo apt install qrencode
+```
+
+Generate QR:
+
+```bash
+qrencode -t ansiutf8 < /etc/wireguard/wg0.conf
+```
+
+---
+
+## Reference
+
+https://www.digitalocean.com/community/tutorials/how-to-set-up-wireguard-on-ubuntu-22-04
