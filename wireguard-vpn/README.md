@@ -30,22 +30,21 @@ Create `/etc/wireguard/wg0.conf`:
 [Interface]
 Address = 10.13.13.1/24
 ListenPort = 51820
-PrivateKey = SERVER_PRIVATE_KEY
-SaveConfig = false
+PrivateKey = <SERVER_PRIVATE_KEY>
 
 [Peer]
 # Peer 1 description
-PublicKey = PEER_1_PUBLIC_KEY
+PublicKey = <PEER_1_PUBLIC_KEY>
 AllowedIPs = 10.13.13.2/32
 
 [Peer]
 # Peer 2 description
-PublicKey = PEER_2_PUBLIC_KEY
+PublicKey = <PEER_2_PUBLIC_KEY>
 AllowedIPs = 10.13.13.3/32
 
 [Peer]
 # Peer 3 description
-PublicKey = PEER_3_PUBLIC_KEY
+PublicKey = <PEER_3_PUBLIC_KEY>
 AllowedIPs = 10.13.13.4/32
 ```
 
@@ -70,7 +69,7 @@ On each peer:
 ```ini
 [Interface]
 Address = 10.13.13.5/32
-PrivateKey = PEER_4_PRIVATE_KEY
+PrivateKey = <PEER_4_PRIVATE_KEY>
 
 # Optional DNS (if needed)
 # DNS = 10.13.13.1
@@ -87,7 +86,7 @@ PersistentKeepalive = 25
 ```ini
 [Peer]
 # Peer 4
-PublicKey = PEER_4_PUBLIC_KEY
+PublicKey = <PEER_4_PUBLIC_KEY>
 AllowedIPs = 10.13.13.5/32
 ```
 
