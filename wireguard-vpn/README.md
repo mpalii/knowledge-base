@@ -75,7 +75,7 @@ PrivateKey = <PEER_4_PRIVATE_KEY>
 # DNS = 10.13.13.1
 
 [Peer]
-PublicKey = SERVER_PUBLIC_KEY
+PublicKey = <SERVER_PUBLIC_KEY>
 Endpoint = VPN_SERVER_IP:51820
 AllowedIPs = 10.13.13.0/24
 PersistentKeepalive = 25
