@@ -4,9 +4,9 @@ sudo systemctl status dnsmasq
 sudo nano /etc/dnsmasq.d/wireguar.conf  
 
 ```
-interface=wg0
-bind-interfaces
-listen-address=10.13.13.1
+#interface=wg0
+#bind-interfaces
+#listen-address=10.13.13.1
 
 address=/home.lan/192.168.88.10
 address=/p10941/10.13.13.2
