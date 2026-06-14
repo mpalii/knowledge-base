@@ -8,9 +8,9 @@ sudo nano /etc/dnsmasq.d/wireguar.conf
 # These mappings resolve internal VPN names to private IPs
 # Used only inside WireGuard network (10.13.13.0/24)
 
-address=/home/192.168.88.10       # Home server in LAN behind VPN gateway
-address=/p10941/10.13.13.2        # VPN peer or service endpoint inside WireGuard network
-
+address=/home.arpa/10.13.13.2              # VPN peer or service endpoint inside WireGuard network
+address=/qbittorrent.home.arpa/10.13.13.2  
+address=/jellyfin.home.arpa/10.13.13.2
 
 # === Fallback upstream DNS servers ===
 # Used when requested domain is NOT defined in local zone above
