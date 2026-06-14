@@ -259,3 +259,5 @@ sudo nano /etc/default/grub
 GRUB_CMDLINE_LINUX_DEFAULT="quiet pcie_aspm=off e1000e.SmartPowerDownEnable=0 reboot=efi,reboot=p,reboot=acpi"  
 sudo update-grub  
 sudo reboot  
+
+https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu  
