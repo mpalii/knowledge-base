@@ -21,3 +21,13 @@ sudo systemctl status dnsmasq
 
 sudo ufw allow in on wg0 to 10.13.13.1 port 53 proto udp  
 sudo ufw allow in on wg0 to 10.13.13.1 port 53 proto tcp  
+
+sudo systemctl edit dnsmasq  
+
+```
+[Unit]
+Wants=wg-quick@wg0.service
+After=wg-quick@wg0.service
+```
+
+cat /etc/systemd/system/dnsmasq.service.d/override.conf   
