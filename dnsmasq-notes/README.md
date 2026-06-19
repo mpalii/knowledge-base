@@ -8,6 +8,10 @@ sudo nano /etc/dnsmasq.d/wireguar.conf
 # These mappings resolve internal VPN names to private IPs
 # Used only inside WireGuard network (10.13.13.0/24)
 
+interface=wg0
+bind-interfaces
+listen-address=10.13.13.1
+
 address=/home.arpa/10.13.13.2              # VPN peer or service endpoint inside WireGuard network
 address=/qbittorrent.home.arpa/10.13.13.2  
 address=/jellyfin.home.arpa/10.13.13.2
