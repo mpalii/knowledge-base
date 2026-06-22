@@ -16,7 +16,7 @@ sudo umount /dev/sdb1
 sudo udisksctl power-off -b /dev/sdb  
 
 sudo smartctl -a /dev/sdb | grep -i temperature  
- 
+lsblk -o NAME,SIZE,FSTYPE,MOUNTPOINT,MODEL  
 
 
 
@@ -24,3 +24,9 @@ sudo smartctl -a /dev/sdb | grep -i temperature
 udisksctl mount -b /dev/sdb1  
 udisksctl unmount -b /dev/sdb1  
 udisksctl power-off -b /dev/sdb  
+
+
+
+sudo mkdir -p /mnt/mydisk  
+sudo mount /dev/sdb1 /mnt/mydisk  
+sudo umount /mnt/mydisk  
