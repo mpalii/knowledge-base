@@ -17,3 +17,10 @@ sudo udisksctl power-off -b /dev/sdb
 
 sudo smartctl -a /dev/sdb | grep -i temperature  
  
+
+
+
+
+udisksctl mount -b /dev/sdb1  
+udisksctl unmount -b /dev/sdb1  
+udisksctl power-off -b /dev/sdb  
