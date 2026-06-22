@@ -5,9 +5,11 @@ sudo smartctl -a /dev/sdb
 sudo smartctl -i -d sat /dev/sdb  
 
 sudo smartctl -t short -d sat /dev/sdb  
+sudo smartctl -a /dev/sdb | grep -i progress  
 sudo smartctl -a -d sat /dev/sdb  
 
 sudo smartctl -t long -d sat /dev/sdb  
+sudo smartctl -a /dev/sdb | grep -i progress  
 sudo smartctl -a -d sat /dev/sdb  
 
 sudo umount /dev/sdb1  
