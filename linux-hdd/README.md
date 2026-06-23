@@ -20,13 +20,13 @@ lsblk -o NAME,SIZE,FSTYPE,MOUNTPOINT,MODEL
 
 
 
-
+FOR DESKTOP
 udisksctl mount -b /dev/sdb1  
 udisksctl unmount -b /dev/sdb1  
 udisksctl power-off -b /dev/sdb  
 
 
-
+FOR SERVER
 sudo mkdir -p /mnt/mydisk  
 sudo mount /dev/sdb1 /mnt/mydisk  
 sudo umount /mnt/mydisk  
