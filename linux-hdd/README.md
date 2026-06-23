@@ -30,3 +30,17 @@ udisksctl power-off -b /dev/sdb
 sudo mkdir -p /mnt/mydisk  
 sudo mount /dev/sdb1 /mnt/mydisk  
 sudo umount /mnt/mydisk  
+
+
+
+
+
+
+
+sudo umount /dev/sdb1  
+lsblk  
+sudo mkfs.ext4 -L WD10TB-1 /dev/sdb1  
+
+
+
+
