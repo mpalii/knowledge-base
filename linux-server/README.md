@@ -125,6 +125,25 @@ sudo nano /etc/caddy/Caddyfile
     }
 }
 ```
+
+```
+{
+        local_certs
+}
+
+home.arpa {
+        root * /var/www/home
+        file_server
+}
+
+jellyfin.home.arpa {
+        reverse_proxy localhost:8096
+}
+
+qbittorrent.home.arpa {
+        reverse_proxy localhost:8094
+}
+```
 sudo caddy validate --config /etc/caddy/Caddyfile  
 sudo systemctl restart caddy  
 sudo ss -tulpn | grep :80  
