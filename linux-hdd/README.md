@@ -43,4 +43,14 @@ sudo mkfs.ext4 -L WD10TB-1 /dev/sdb1
 
 
 
+lsblk -f  
+sudo nano /etc/fstab  
+# WD10TB-B00NSUWD  
+UUID=bc869bc3-3ccf-4d35-9f05-755683fd833a  /mnt/WD10TB-B00NSUWD  ext4  defaults,nofail  0  2  
+sudo mount -a  
+df -h  
+mount | grep storage  
+
+
+
 
